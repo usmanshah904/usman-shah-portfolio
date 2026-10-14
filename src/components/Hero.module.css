@@ -1,0 +1,421 @@
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: calc(var(--nav-h) + 88px) 0 104px;
+  background: var(--bg);
+}
+
+@media (max-width: 720px) {
+  .hero {
+    padding: calc(var(--nav-h) + 56px) 0 72px;
+  }
+}
+
+/* Faint dot grid + drifting colour glows (transform-only animation) */
+.backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(31, 78, 121, 0.14) 1px, transparent 1px);
+  background-size: 22px 22px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 40%, transparent 100%);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.blobA {
+  top: -120px;
+  right: -60px;
+  width: 460px;
+  height: 460px;
+  background: #c7d2fe;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.blobB {
+  bottom: -160px;
+  left: -120px;
+  width: 420px;
+  height: 420px;
+  background: #bae6fd;
+  animation: drift 22s ease-in-out infinite alternate-reverse;
+}
+
+.blobC {
+  top: 30%;
+  left: 45%;
+  width: 280px;
+  height: 280px;
+  background: #ddd6fe;
+  opacity: 0.4;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-40px, 30px, 0) scale(1.12);
+  }
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 56px;
+  }
+}
+
+/* Entrance animation, staggered by --d */
+.enter {
+  animation: rise 0.7s var(--ease) both;
+  animation-delay: calc(var(--d, 0) * 90ms + 80ms);
+}
+
+/* Headline and intro (the largest text) stay visible from the first frame (better load score). */
+.enterSlide {
+  animation: slide 0.7s var(--ease) both;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(14px);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.label {
+  margin-top: 0;
+  color: var(--indigo);
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  white-space: pre;
+}
+
+.title {
+  margin-top: 16px;
+  font-size: clamp(2rem, 1.35rem + 2.7vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.subtext {
+  max-width: 50ch;
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: clamp(0.9875rem, 0.95rem + 0.2vw, 1.0625rem);
+  line-height: 1.7;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 34px;
+}
+
+.social {
+  display: flex;
+  gap: 6px;
+  margin-left: 6px;
+}
+
+.social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-glass);
+  color: var(--muted);
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.social a:hover {
+  color: var(--indigo);
+  border-color: var(--accent-line);
+  transform: translateY(-2px);
+}
+
+/* ---------- Console visual ---------- */
+/* A rotating conic gradient behind the card gives it a moving glowing border. */
+.frame {
+  position: relative;
+  padding: 1.5px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.frame::before {
+  content: '';
+  position: absolute;
+  inset: -60%;
+  background: conic-gradient(from 0deg, #5b5bd6, #0891b2, #c7d2fe, #1f4e79, #5b5bd6);
+  animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.console {
+  position: relative;
+  border-radius: 16.5px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.chrome span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border-strong);
+}
+
+.chrome p {
+  margin-left: 6px;
+  color: var(--subtle);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+}
+
+.live {
+  margin-left: auto;
+  padding: 1px 8px;
+  border-radius: 999px;
+  background: rgba(18, 183, 106, 0.12);
+  color: var(--success);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-style: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.diagram {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 22px 18px 6px;
+}
+
+.node {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 11px;
+  border: 1px solid var(--accent-line);
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--text);
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.node svg {
+  color: var(--indigo);
+}
+
+.wire {
+  position: relative;
+  flex: 1;
+  min-width: 36px;
+  height: 2px;
+  background: repeating-linear-gradient(90deg, var(--accent-line) 0 6px, transparent 6px 12px);
+}
+
+.wire em {
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  transform: translateX(-50%);
+  color: var(--subtle);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-style: normal;
+}
+
+/* A track as wide as the wire (minus the dot); moving it by its own width
+   slides the dot end to end using only transform (GPU-friendly). */
+.packet {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  width: calc(100% - 8px);
+  height: 8px;
+  animation: travel 2.8s var(--ease) infinite alternate;
+  will-change: transform;
+}
+
+.packet::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--indigo);
+  box-shadow: 0 0 10px var(--indigo);
+}
+
+@keyframes travel {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.log {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 18px 18px 20px;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.log li {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+  animation: rise 0.5s var(--ease) both;
+  animation-delay: calc(var(--l) * 450ms + 900ms);
+}
+
+.log li::before {
+  display: inline-block;
+  width: 1.4em;
+}
+
+.cmd {
+  color: var(--text) !important;
+  font-weight: 600;
+}
+
+.cmd::before {
+  content: '$';
+  color: var(--indigo);
+}
+
+.out::before {
+  content: '→';
+  color: var(--cyan);
+}
+
+.in::before {
+  content: '←';
+  color: var(--cyan);
+}
+
+.ok::before {
+  content: '✓';
+  color: var(--success);
+}
+
+/* Blinking cursor at the end of the log */
+.cursor {
+  width: 8px;
+  height: 14px;
+  margin-left: 1.4em;
+  background: var(--indigo);
+  border-radius: 1px;
+}
+
+.log .cursor {
+  animation:
+    rise 0.5s var(--ease) both,
+    blink 1s steps(1) infinite;
+  animation-delay: calc(var(--l) * 450ms + 900ms), 3.4s;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .diagram {
+    padding: 20px 12px 4px;
+    gap: 8px;
+  }
+
+  .node {
+    padding: 7px 9px;
+    font-size: 0.75rem;
+  }
+
+  .node svg {
+    display: none;
+  }
+
+  .log {
+    padding: 14px 12px 16px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .actions > a {
+    flex: 1 1 100%;
+  }
+
+  .social {
+    margin-left: 0;
+  }
+}

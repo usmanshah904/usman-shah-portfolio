@@ -1,0 +1,175 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field label {
+  font-family: var(--display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.optional {
+  color: var(--subtle);
+  font-weight: 400;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9375rem;
+  transition:
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.field textarea {
+  min-height: 104px;
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.field select {
+  appearance: none;
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238b96a8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  cursor: pointer;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+  border-color: var(--subtle);
+}
+
+.field input:focus-visible,
+.field select:focus-visible,
+.field textarea:focus-visible {
+  outline: none;
+  border-color: var(--indigo);
+  background-color: var(--surface);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.field [aria-invalid='true'] {
+  border-color: var(--danger);
+}
+
+.field [aria-invalid='true']:focus-visible {
+  border-color: var(--danger);
+  box-shadow: 0 0 0 4px rgba(196, 50, 10, 0.12);
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--danger);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.submit {
+  align-self: flex-start;
+  min-width: 160px;
+}
+
+@media (max-width: 520px) {
+  .submit {
+    align-self: stretch;
+  }
+}
+
+.spinner {
+  width: 15px;
+  height: 15px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.status {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status:not(:empty) {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.status svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ok:not(:empty) {
+  background: rgba(6, 118, 71, 0.08);
+  color: var(--success);
+}
+
+.bad:not(:empty) {
+  background: rgba(196, 50, 10, 0.08);
+  color: var(--danger);
+}
+
+.bad a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

@@ -1,0 +1,125 @@
+.header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 50;
+}
+
+.nav {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: var(--nav-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.015em;
+}
+
+.brand svg {
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+
+.brand:hover svg {
+  transform: rotate(-8deg) scale(1.06);
+}
+
+.links {
+  display: flex;
+  gap: 4px;
+}
+
+.links a {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition:
+    color 0.2s var(--ease),
+    background-color 0.2s var(--ease);
+}
+
+.links a:hover {
+  color: var(--text);
+  background: var(--accent-soft);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cta {
+  min-height: 38px;
+  padding: 0 16px;
+  font-size: 0.8125rem;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.cta:hover {
+  background: var(--accent-hover);
+}
+
+.toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .toggle {
+    display: inline-flex;
+  }
+
+  .links {
+    display: none;
+    position: absolute;
+    top: calc(var(--nav-h) - 4px);
+    left: 16px;
+    right: 16px;
+    flex-direction: column;
+    gap: 2px;
+    padding: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .links.open {
+    display: flex;
+  }
+
+  .links a {
+    padding: 11px 14px;
+    font-size: 0.9375rem;
+    color: var(--text);
+  }
+}
+
+@media (max-width: 420px) {
+  .cta {
+    display: none;
+  }
+}

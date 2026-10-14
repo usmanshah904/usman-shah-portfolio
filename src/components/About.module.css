@@ -1,0 +1,63 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+  gap: 28px 64px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.text {
+  color: var(--text);
+  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+  line-height: 1.75;
+  text-wrap: pretty;
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 28px;
+}
+
+@media (max-width: 960px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.fact {
+  padding: 12px 14px;
+  overflow: hidden;
+}
+
+/* Thin gradient accent along the top of each fact card */
+.fact::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: var(--gradient);
+  opacity: 0.8;
+}
+
+.fact dt {
+  color: var(--subtle);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.fact dd {
+  margin-top: 4px;
+  font-family: var(--display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+}

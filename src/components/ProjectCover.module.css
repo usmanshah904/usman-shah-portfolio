@@ -1,0 +1,97 @@
+.cover {
+  position: relative;
+  aspect-ratio: 400 / 160;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Soft light gradients with a faint dot grid */
+.genai {
+  background:
+    radial-gradient(rgba(91, 91, 214, 0.16) 1px, transparent 1px) 0 0 / 16px 16px,
+    radial-gradient(circle at 80% 10%, rgba(8, 145, 178, 0.18), transparent 60%),
+    linear-gradient(135deg, #eef2ff 0%, #f5f3ff 50%, #ecfeff 100%);
+}
+
+.web {
+  background:
+    radial-gradient(rgba(31, 78, 121, 0.14) 1px, transparent 1px) 0 0 / 16px 16px,
+    radial-gradient(circle at 15% 10%, rgba(91, 91, 214, 0.16), transparent 60%),
+    linear-gradient(135deg, #eff6ff 0%, #f0f9ff 60%, #f5f3ff 100%);
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s var(--ease);
+}
+
+:global(.card):hover .svg {
+  transform: scale(1.05);
+}
+
+/* Agent graph */
+.edge {
+  stroke: rgba(91, 91, 214, 0.5);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 6;
+}
+
+/* Data "flows" along the edges only while the card is hovered. */
+:global(.card):hover .edge {
+  animation: flow 2.4s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    stroke-dashoffset: -40;
+  }
+}
+
+.halo {
+  fill: rgba(91, 91, 214, 0.1);
+}
+
+.node {
+  fill: #ffffff;
+  stroke: #5b5bd6;
+  stroke-width: 2;
+}
+
+.nodeMain {
+  fill: #5b5bd6;
+  stroke: #ffffff;
+  stroke-width: 2;
+}
+
+/* Browser mock */
+.window {
+  fill: #ffffff;
+  stroke: #d6dde8;
+  filter: drop-shadow(0 8px 14px rgba(31, 78, 121, 0.12));
+}
+
+.chromeDot {
+  fill: #cfd7e3;
+}
+
+.bar {
+  fill: #eef2f7;
+}
+
+.strong {
+  fill: #1f2d3d;
+}
+
+.line {
+  fill: #cfd7e3;
+}
+
+.accent {
+  fill: #5b5bd6;
+}
+
+.block {
+  fill: #e8eefb;
+}

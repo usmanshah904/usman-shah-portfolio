@@ -1,0 +1,105 @@
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 32px 48px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.channels {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 420px;
+  margin-top: 24px;
+}
+
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px 10px 10px;
+  color: var(--text);
+}
+
+.channelIcon {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--indigo);
+  transition:
+    background 0.3s var(--ease),
+    color 0.3s var(--ease);
+}
+
+.channel:hover .channelIcon {
+  background: var(--gradient);
+  color: #ffffff;
+}
+
+.channelBody {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.channelLabel {
+  color: var(--subtle);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.channelValue {
+  overflow-wrap: break-word;
+  font-family: var(--display);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.channelArrow {
+  color: var(--subtle);
+  transition:
+    transform 0.25s var(--ease),
+    color 0.25s var(--ease);
+}
+
+.channel:hover .channelArrow {
+  color: var(--indigo);
+  transform: translate(2px, -2px);
+}
+
+.formCard {
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.formTitle {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.formIntro {
+  margin: 4px 0 18px;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+@media (max-width: 480px) {
+  .formCard {
+    padding: 18px 16px;
+  }
+}

@@ -1,0 +1,463 @@
+/* ---------- Font: Outfit (variable, Latin), self-hosted. Licence: public/fonts/OFL-Outfit.txt ---------- */
+@font-face {
+  font-family: 'Outfit';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/fonts/outfit-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308,
+    U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* Light, airy surfaces. Sections alternate between these tints. */
+  --bg: #f8fafd;
+  --tint-blue: #eef4fc;
+  --tint-violet: #f4f2fe;
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.72);
+
+  --text: #142033;
+  --muted: #55627a;
+  --subtle: #647083;
+
+  /* Brand: deep blue for text/buttons, indigo + cyan for futuristic accents */
+  --accent: #1f4e79;
+  --accent-hover: #173b5c;
+  --on-accent: #ffffff;
+  --indigo: #5b5bd6;
+  --cyan: #0891b2;
+  --accent-soft: rgba(91, 91, 214, 0.08);
+  --accent-line: rgba(91, 91, 214, 0.28);
+  --gradient: linear-gradient(110deg, #1f4e79 0%, #5b5bd6 55%, #0891b2 100%);
+
+  --border: #e3e8f0;
+  --border-strong: #cfd7e3;
+  --danger: #c4320a;
+  --success: #067647;
+  --nav-bg: rgba(248, 250, 253, 0.78);
+
+  --shadow-sm: 0 1px 2px rgba(20, 32, 51, 0.04);
+  --shadow-md: 0 14px 34px -14px rgba(31, 78, 121, 0.22);
+  --shadow-lg: 0 30px 60px -28px rgba(31, 78, 121, 0.28);
+
+  /* One family for everything: Outfit (geometric, with a sharp-topped "A") */
+  --font: 'Outfit', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --display: var(--font);
+  --mono: ui-monospace, 'SF Mono', 'Cascadia Code', Consolas, 'Liberation Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 10px;
+  --nav-h: 64px;
+  --max-w: 1120px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* Always light, even when the device is in dark mode */
+  color-scheme: only light;
+}
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--display);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+dl,
+dd {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--indigo);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(91, 91, 214, 0.18);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 18px;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+.gradient-text {
+  /* Vertical padding on an inline element widens the painted area without moving
+     the line, so the tops of tall letters are not clipped by the tight line height. */
+  padding: 0.12em 0.02em;
+  margin: 0 -0.02em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  color: transparent;
+}
+
+/* ---------- Sections ---------- */
+.section {
+  position: relative;
+  padding: 96px 0 112px;
+  border-top: 1px solid var(--border);
+  scroll-margin-top: calc(var(--nav-h) - 8px);
+}
+
+.tint-blue {
+  background: var(--tint-blue);
+}
+
+.tint-violet {
+  background: var(--tint-violet);
+}
+
+.tint-white {
+  background: var(--surface);
+}
+
+/* Short gradient bar on the section edge: clear visual separation */
+.section::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: min(220px, 40%);
+  height: 2px;
+  transform: translateX(-50%);
+  background: var(--gradient);
+  border-radius: 2px;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 68px 0 84px;
+  }
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 44px;
+}
+
+@media (max-width: 720px) {
+  .section-head {
+    margin-bottom: 30px;
+  }
+}
+
+.section-head > div {
+  max-width: 600px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: var(--indigo);
+  font-family: var(--display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  padding: 0 8px;
+  border: 1px solid var(--accent-line);
+  border-radius: 6px;
+  background: var(--accent-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+.section-title {
+  font-size: clamp(1.5rem, 1.15rem + 1.3vw, 2.125rem);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.section-intro {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 0.9875rem;
+  text-wrap: pretty;
+}
+
+/* ---------- Shared pieces ---------- */
+.card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition:
+    transform 0.3s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-line);
+  box-shadow: var(--shadow-md);
+}
+
+/* Spotlight: a soft glow that follows the pointer (position set in Spotlight.ts) */
+.spot {
+  isolation: isolate;
+}
+
+.spot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(91, 91, 214, 0.1),
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+  pointer-events: none;
+}
+
+.spot:hover::after {
+  opacity: 1;
+}
+
+.tag {
+  display: inline-block;
+  padding: 3px 9px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  font-family: var(--display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 0.2s var(--ease),
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    box-shadow 0.2s var(--ease),
+    transform 0.2s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  cursor: progress;
+  opacity: 0.75;
+  transform: none;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  box-shadow: 0 8px 20px -8px rgba(31, 78, 121, 0.55);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+  box-shadow: 0 12px 24px -8px rgba(31, 78, 121, 0.6);
+}
+
+.btn-outline {
+  background: var(--surface-glass);
+  border-color: var(--border-strong);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--indigo);
+  color: var(--indigo);
+}
+
+/* ---------- Reveal on scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.6s var(--ease);
+}
+
+.is-visible .reveal {
+  opacity: 1;
+  transform: none;
+}
+
+/* Children reveal one after another; set --i on each item. */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(18px) scale(0.98);
+  transition:
+    opacity 0.55s var(--ease),
+    transform 0.55s var(--ease),
+    border-color 0.3s var(--ease),
+    box-shadow 0.3s var(--ease);
+  transition-delay: calc(var(--i, 0) * 70ms);
+}
+
+.is-visible .stagger > * {
+  opacity: 1;
+  transform: none;
+}
+
+/* Once revealed, drop the delay so hovers feel instant. */
+.is-settled .stagger > * {
+  transition-delay: 0ms;
+}
+
+.is-settled .stagger > .card-hover:hover {
+  transform: translateY(-3px);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal,
+  .stagger > * {
+    opacity: 1;
+    transform: none;
+  }
+
+  .card-hover:hover,
+  .btn:hover {
+    transform: none;
+  }
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
