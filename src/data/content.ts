@@ -96,7 +96,7 @@ export const services: { group: string; items: Service[] }[] = [
       {
         icon: 'agent',
         title: 'AI Agent Engineering',
-        text: 'Build single- and multi-agent systems with tool integration, persistent memory, and reliable guardrails.',
+        text: 'Build single and multi-agent systems with tool integration, persistent memory, and reliable guardrails.',
       },
       {
         icon: 'search',
@@ -225,6 +225,7 @@ export const experience: {
 }[] = [
   {
     role: 'Gen AI Engineer',
+    org: 'Mosaic AI',
     period: 'Sep 2026 – Present',
     location: 'Remote, USA',
     text: 'Engineering AI agents, RAG pipelines, and LLM-powered features across backend and frontend systems.',

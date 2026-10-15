@@ -64,7 +64,7 @@ End commit messages with the co-author line the session asks for.
 
 ## Content rules
 
-- **Never name Usman's current employer or describe its product.** The current role is shown only as "Gen AI Engineer".
+- **Current role:** "Gen AI Engineer" at **Mosaic AI** (company name shown at his request). Never describe the employer's product or internal projects.
 - **No location or "open to remote" in the hero, about or contact.** Location appears only under Experience dates: Gen AI Engineer → "Remote, USA"; Ataraxy Developers → "Islamabad, Pakistan".
 - Do not invent projects, links, metrics, clients or testimonials. Add a "Visit site" link only where a real URL exists.
 - Positioning: **Gen AI Engineer first**, web development as a complementary skill. Copy is professional and confident, never buzzword-heavy; keep text lengths close to current so cards don't grow.
