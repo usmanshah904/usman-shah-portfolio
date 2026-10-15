@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { categoryLabels, projects, sections, type Category } from '../data/content';
-import { Icon } from './Icon';
+import { Icon, type IconName } from './Icon';
 import { ProjectCover } from './ProjectCover';
 import { Section } from './Section';
 import styles from './Projects.module.css';
@@ -10,8 +10,15 @@ export type ProjectFilter = 'all' | Category;
 const filters: { value: ProjectFilter; label: string }[] = [
   { value: 'all', label: 'All' },
   { value: 'genai', label: categoryLabels.genai },
+  { value: 'software', label: categoryLabels.software },
   { value: 'web', label: categoryLabels.web },
 ];
+
+const categoryIcons: Record<Category, IconName> = {
+  genai: 'agent',
+  software: 'layout',
+  web: 'code',
+};
 
 interface Props {
   filter: ProjectFilter;
@@ -61,7 +68,7 @@ export function Projects({ filter, onFilterChange }: Props) {
             <ProjectCover category={p.category} variant={projects.indexOf(p)} />
             <div className={styles.body}>
               <span className={styles.category}>
-                <Icon name={p.category === 'genai' ? 'agent' : 'code'} size={12} />
+                <Icon name={categoryIcons[p.category]} size={12} />
                 {categoryLabels[p.category]}
               </span>
               <h3 className={styles.title}>{p.title}</h3>

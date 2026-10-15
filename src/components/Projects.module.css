@@ -31,6 +31,22 @@
   color: var(--text);
 }
 
+.filter {
+  white-space: nowrap;
+}
+
+/* Four tabs on a phone: tighter spacing so they stay on one line */
+@media (max-width: 420px) {
+  .filters {
+    gap: 2px;
+  }
+
+  .filter {
+    gap: 5px;
+    padding: 0 9px;
+  }
+}
+
 .count {
   display: inline-flex;
   align-items: center;

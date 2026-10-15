@@ -67,8 +67,10 @@ End commit messages with the co-author line the session asks for.
 - **Never name Usman's current employer or describe its product.** The current role is shown only as "Gen AI Engineer".
 - **No location or "open to remote" in the hero, about or contact.** Location appears only under Experience dates: Gen AI Engineer → "Remote, USA"; Ataraxy Developers → "Islamabad, Pakistan".
 - Do not invent projects, links, metrics, clients or testimonials. Add a "Visit site" link only where a real URL exists.
-- Gen AI services: AI Agent Development, RAG and LLM Features, AI Chatbots and Assistants. He did **not** want a prompt-engineering service.
-- Projects come from his real work (multi-agent ADK + A2A, reflection/guardrails agent, spec-driven task manager, persistent-memory agent, Vnetrix, Usman Anees).
+- Positioning: **Gen AI Engineer first**, web development as a complementary skill. Copy is professional and confident, never buzzword-heavy; keep text lengths close to current so cards don't grow.
+- Gen AI services: AI Agent Engineering, RAG & LLM Integration, AI Chatbots & Assistants. Web services: Full-Stack Development, WordPress Development, On-Page SEO & Performance. He did **not** want a prompt-engineering service.
+- Projects come from his real work (multi-agent ADK + A2A, reflection/guardrails agent, persistent-memory agent, spec-driven task manager, Vnetrix, Usman Anees).
+- Project categories (filter tabs): **Gen AI** (3), **Software** (1: Spec-Driven Smart Task Manager, a software-engineering project), **Web** (2). `Category` in `content.ts` drives the tabs, badge icon and cover art (`ProjectCover`: agent graph / task-list app / browser mock).
 - When new content is needed, **offer options and let him choose** before adding. Explain technical steps in plain language first.
 
 ## External services

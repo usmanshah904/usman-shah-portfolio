@@ -81,10 +81,43 @@ function BrowserMock({ variant }: { variant: number }) {
   );
 }
 
+// Software projects: a small task-list app (search bar, checked and open tasks).
+function TaskMock() {
+  const rows = [
+    { y: 82, done: true, w: 120 },
+    { y: 106, done: true, w: 96 },
+    { y: 130, done: false, w: 136 },
+    { y: 154, done: false, w: 84 },
+  ];
+  return (
+    <svg viewBox="0 0 400 160" className={styles.svg} preserveAspectRatio="xMidYMid meet">
+      <rect x="80" y="22" width="240" height="160" rx="9" className={styles.window} />
+      <circle cx="95" cy="35" r="3" className={styles.chromeDot} />
+      <circle cx="106" cy="35" r="3" className={styles.chromeDot} />
+      <circle cx="117" cy="35" r="3" className={styles.chromeDot} />
+      <rect x="135" y="30" width="110" height="9" rx="4.5" className={styles.bar} />
+      <rect x="95" y="54" width="150" height="14" rx="7" className={styles.block} />
+      <rect x="253" y="54" width="52" height="14" rx="7" className={styles.accent} />
+      {rows.map((r) => (
+        <g key={r.y}>
+          <circle cx="103" cy={r.y} r="6" className={r.done ? styles.accent : styles.chromeDot} />
+          <rect x="117" y={r.y - 3} width={r.w} height="6" rx="3" className={r.done ? styles.line : styles.strong} />
+        </g>
+      ))}
+    </svg>
+  );
+}
+
 export function ProjectCover({ category, variant }: { category: Category; variant: number }) {
   return (
-    <div className={`${styles.cover} ${category === 'web' ? styles.web : styles.genai}`} aria-hidden="true">
-      {category === 'genai' ? <AgentGraph variant={variant} /> : <BrowserMock variant={variant} />}
+    <div className={`${styles.cover} ${category === 'genai' ? styles.genai : styles.web}`} aria-hidden="true">
+      {category === 'genai' ? (
+        <AgentGraph variant={variant} />
+      ) : category === 'software' ? (
+        <TaskMock />
+      ) : (
+        <BrowserMock variant={variant} />
+      )}
     </div>
   );
 }
