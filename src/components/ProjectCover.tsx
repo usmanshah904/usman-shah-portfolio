@@ -150,11 +150,75 @@ function A2ADiagram() {
   );
 }
 
-export function ProjectCover({ category, variant, diagram }: { category: Category; variant: number; diagram?: 'a2a' }) {
-  if (diagram === 'a2a') {
+// Reflection & guardrails project: its pipeline. On card hover it plays two
+// runs: a clean one that is released, then one with a false claim that is blocked.
+const GR_VIA_REFLECTION = 'M98 72 C 112 72 112 46 126 46 H220 C 234 46 234 72 248 72 H296 ';
+const GR_VIA_GUARDRAIL = 'M98 88 C 112 88 112 114 126 114 H220 C 234 114 234 88 248 88 H296 ';
+const GR_TO_RELEASED = 'C 306 72 306 46 316 46 H330';
+const GR_TO_BLOCKED = 'C 306 88 306 114 316 114 H330';
+const grPath = (d: string) => ({ offsetPath: `path('${d}')` });
+
+function GuardrailsDiagram() {
+  return (
+    <svg viewBox="0 0 400 160" className={`${styles.svg} ${styles.gr}`} preserveAspectRatio="xMidYMid meet">
+      {/* links */}
+      <path d="M98 72 C 112 72 112 46 126 46" className={styles.a2aLink} />
+      <path d="M98 88 C 112 88 112 114 126 114" className={styles.a2aLink} />
+      <path d="M220 46 C 234 46 234 72 248 72" className={styles.a2aLink} />
+      <path d="M220 114 C 234 114 234 88 248 88" className={styles.a2aLink} />
+      <path d="M296 72 C 306 72 306 46 316 46" className={`${styles.a2aLink} ${styles.grOkLink}`} />
+      <path d="M296 88 C 306 88 306 114 316 114" className={`${styles.a2aLink} ${styles.grBadLink}`} />
+
+      {/* analysis */}
+      <rect x="14" y="52" width="84" height="56" rx="10" className={`${styles.a2aBox} ${styles.a2aSummary}`} />
+      <text x="56" y="77" textAnchor="middle" className={styles.a2aTitle}>Analysis</text>
+      <text x="56" y="94" textAnchor="middle" className={styles.a2aSub}>Claude</text>
+      <g className={styles.grClaim}>
+        <rect x="16" y="118" width="80" height="20" rx="10" className={styles.grClaimPill} />
+        <text x="56" y="132" textAnchor="middle" className={styles.grClaimText}>+ false claim</text>
+      </g>
+
+      {/* checks */}
+      <rect x="126" y="24" width="94" height="44" rx="10" className={`${styles.a2aBox} ${styles.grCheck}`} />
+      <text x="173" y="43" textAnchor="middle" className={styles.a2aTitle}>Reflection</text>
+      <text x="173" y="59" textAnchor="middle" className={styles.a2aSub}>correct?</text>
+      <rect x="126" y="92" width="94" height="44" rx="10" className={`${styles.a2aBox} ${styles.grCheck}`} />
+      <text x="173" y="111" textAnchor="middle" className={styles.a2aTitle}>Guardrail</text>
+      <text x="173" y="127" textAnchor="middle" className={styles.a2aSub}>safe to release?</text>
+
+      {/* gate */}
+      <rect x="248" y="58" width="48" height="44" rx="10" className={`${styles.a2aBox} ${styles.grGate}`} />
+      <text x="272" y="77" textAnchor="middle" className={styles.a2aSub}>both</text>
+      <text x="272" y="92" textAnchor="middle" className={styles.a2aSub}>PASS?</text>
+
+      {/* outcomes */}
+      <rect x="316" y="26" width="72" height="40" rx="10" className={`${styles.grOut} ${styles.grReleased}`} />
+      <text x="352" y="51" textAnchor="middle" className={`${styles.a2aTitle} ${styles.grOkText}`}>Released</text>
+      <rect x="316" y="94" width="72" height="40" rx="10" className={`${styles.grOut} ${styles.grBlocked}`} />
+      <text x="352" y="119" textAnchor="middle" className={`${styles.a2aTitle} ${styles.grBadText}`}>Blocked</text>
+
+      {/* packets (hover only): run 1 ends at Released, run 2 at Blocked */}
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.grOk}`} style={grPath(GR_VIA_REFLECTION + GR_TO_RELEASED)} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.grOk}`} style={grPath(GR_VIA_GUARDRAIL + GR_TO_RELEASED)} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.grBad}`} style={grPath(GR_VIA_REFLECTION + GR_TO_BLOCKED)} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.grBad}`} style={grPath(GR_VIA_GUARDRAIL + GR_TO_BLOCKED)} />
+    </svg>
+  );
+}
+
+export function ProjectCover({
+  category,
+  variant,
+  diagram,
+}: {
+  category: Category;
+  variant: number;
+  diagram?: 'a2a' | 'guardrails';
+}) {
+  if (diagram) {
     return (
       <div className={`${styles.cover} ${styles.genai}`} aria-hidden="true">
-        <A2ADiagram />
+        {diagram === 'a2a' ? <A2ADiagram /> : <GuardrailsDiagram />}
       </div>
     );
   }

@@ -281,3 +281,212 @@
     animation: none;
   }
 }
+
+/* ---------- Reflection & guardrails cover ---------- */
+.grCheck {
+  stroke: #0891b2;
+}
+
+.grGate {
+  stroke: #647083;
+}
+
+.grOut {
+  stroke-width: 1.6;
+}
+
+.grReleased {
+  fill: #ecfdf3;
+  stroke: #067647;
+}
+
+.grBlocked {
+  fill: #fef3f2;
+  stroke: #b42318;
+}
+
+.grOkText {
+  fill: #067647;
+}
+
+.grBadText {
+  fill: #b42318;
+}
+
+.grOkLink {
+  stroke: #067647;
+}
+
+.grBadLink {
+  stroke: #b42318;
+}
+
+.grClaim {
+  opacity: 0;
+}
+
+.grClaimPill {
+  fill: #fee4e2;
+  stroke: #b42318;
+  stroke-width: 1.2;
+}
+
+.grClaimText {
+  fill: #b42318;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.grOk {
+  fill: #067647;
+}
+
+.grBad {
+  fill: #b42318;
+}
+
+/* One hover loop = two runs (6 s): 0-50% clean -> Released, 50-100% false claim -> Blocked */
+:global(.card):hover .grOk {
+  animation: grRun1 6s linear infinite;
+}
+
+:global(.card):hover .grBad {
+  animation: grRun2 6s linear infinite;
+}
+
+:global(.card):hover .grClaim {
+  animation: grClaim 6s ease infinite;
+}
+
+:global(.card):hover .grCheck {
+  animation: grChecks 6s ease infinite;
+}
+
+:global(.card):hover .grReleased {
+  animation: grReleasedGlow 6s ease infinite;
+}
+
+:global(.card):hover .grBlocked {
+  animation: grBlockedGlow 6s ease infinite;
+}
+
+@keyframes grRun1 {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  34% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  38%,
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes grRun2 {
+  0%,
+  50% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  53% {
+    opacity: 1;
+  }
+  84% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  88%,
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes grClaim {
+  0%,
+  46% {
+    opacity: 0;
+  }
+  52%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes grChecks {
+  0%,
+  10% {
+    stroke: #0891b2;
+    filter: none;
+  }
+  14%,
+  30% {
+    stroke: #067647;
+    filter: drop-shadow(0 0 6px rgba(6, 118, 71, 0.55));
+  }
+  36%,
+  60% {
+    stroke: #0891b2;
+    filter: none;
+  }
+  64%,
+  80% {
+    stroke: #b42318;
+    filter: drop-shadow(0 0 6px rgba(180, 35, 24, 0.55));
+  }
+  86%,
+  100% {
+    stroke: #0891b2;
+    filter: none;
+  }
+}
+
+@keyframes grReleasedGlow {
+  0%,
+  30% {
+    filter: none;
+  }
+  34%,
+  46% {
+    filter: drop-shadow(0 0 8px rgba(6, 118, 71, 0.7));
+  }
+  50%,
+  100% {
+    filter: none;
+  }
+}
+
+@keyframes grBlockedGlow {
+  0%,
+  80% {
+    filter: none;
+  }
+  84%,
+  96% {
+    filter: drop-shadow(0 0 8px rgba(180, 35, 24, 0.7));
+  }
+  100% {
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.card):hover .grOk,
+  :global(.card):hover .grBad,
+  :global(.card):hover .grClaim,
+  :global(.card):hover .grCheck,
+  :global(.card):hover .grReleased,
+  :global(.card):hover .grBlocked {
+    animation: none;
+  }
+}

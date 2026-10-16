@@ -139,7 +139,7 @@ export interface Project {
   category: Category;
   url?: string; // live website; leave out if there is no public link
   github?: string; // source repository
-  diagram?: 'a2a'; // animated architecture diagram used as the card cover
+  diagram?: 'a2a' | 'guardrails'; // animated architecture diagram used as the card cover
 }
 
 export const projects: Project[] = [
@@ -158,6 +158,8 @@ export const projects: Project[] = [
       'An AI-powered sales analyst that evaluates its own findings and blocks unsupported claims through a dedicated validation and governance layer.',
     tags: ['Python', 'Claude Code', 'Agentic AI'],
     category: 'genai',
+    github: 'https://github.com/usmanshah904/reflection-guardrails-agent',
+    diagram: 'guardrails',
   },
   {
     title: 'Spec-Driven Smart Task Manager',
