@@ -158,11 +158,17 @@
   margin-top: auto;
 }
 
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: 14px;
+}
+
 .link {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  margin-top: 14px;
   font-family: var(--display);
   font-size: 0.8125rem;
   font-weight: 600;

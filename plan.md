@@ -71,6 +71,7 @@ End commit messages with the co-author line the session asks for.
 - Gen AI services: AI Agent Engineering, RAG & LLM Integration, AI Chatbots & Assistants. Web services: Full-Stack Development, WordPress Development, On-Page SEO & Performance. He did **not** want a prompt-engineering service.
 - Projects come from his real work (multi-agent ADK + A2A, reflection/guardrails agent, persistent-memory agent, spec-driven task manager, Vnetrix, Usman Anees).
 - Project categories (filter tabs): **Gen AI** (3), **Software** (1: Spec-Driven Smart Task Manager, a software-engineering project), **Web** (2). `Category` in `content.ts` drives the tabs, badge icon and cover art (`ProjectCover`: agent graph / task-list app / browser mock).
+- **Project repos and covers:** a project can set `github` (adds a GitHub link on its card) and `diagram` (replaces the generated cover with its real architecture, animated on card hover). Published so far: Multi-Agent ADK + A2A → https://github.com/usmanshah904/adk-a2a-multi-agent (`diagram: 'a2a'`). Planned next, same treatment: Reflection & Guardrails (Task 3), Persistent Memory (Task 4), Smart Task Manager (Task 5, after he polishes its UI). Each repo gets: README with diagram + real screenshots, tests + GitHub Actions, requirements, `.env.example` where keys are needed, MIT licence, and a privacy check before pushing.
 - When new content is needed, **offer options and let him choose** before adding. Explain technical steps in plain language first.
 
 ## External services

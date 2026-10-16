@@ -108,7 +108,56 @@ function TaskMock() {
   );
 }
 
-export function ProjectCover({ category, variant }: { category: Category; variant: number }) {
+// Multi-agent project: its real architecture. On card hover the links glow and
+// packets travel the A2A request and response paths (see .a2a* styles).
+function A2ADiagram() {
+  return (
+    <svg viewBox="0 0 400 160" className={`${styles.svg} ${styles.a2a}`} preserveAspectRatio="xMidYMid meet">
+      {/* links: user <-> summary, summary <-> research over A2A, discovery */}
+      <path d="M58 72 H82" className={styles.a2aLink} />
+      <path d="M82 92 H58" className={styles.a2aLink} />
+      <path d="M190 62 H254" className={`${styles.a2aLink} ${styles.a2aMain}`} />
+      <path d="M254 94 H190" className={`${styles.a2aLink} ${styles.a2aMain}`} />
+      <path d="M136 122 V146 H314 V136" className={styles.a2aDiscover} />
+
+      {/* user */}
+      <circle cx="40" cy="82" r="17" className={styles.a2aUser} />
+      <circle cx="40" cy="77" r="5" className={styles.a2aUserGlyph} />
+      <path d="M31 92c2-6 5-8 9-8s7 2 9 8" className={styles.a2aUserGlyph} />
+
+      {/* summary agent */}
+      <rect x="82" y="40" width="108" height="82" rx="11" className={`${styles.a2aBox} ${styles.a2aSummary}`} />
+      <text x="136" y="70" textAnchor="middle" className={styles.a2aTitle}>Summary</text>
+      <text x="136" y="86" textAnchor="middle" className={styles.a2aTitle}>Agent</text>
+      <text x="136" y="106" textAnchor="middle" className={styles.a2aSub}>ADK · Gemini</text>
+
+      {/* A2A label */}
+      <rect x="198" y="68" width="48" height="20" rx="10" className={styles.a2aPill} />
+      <text x="222" y="82" textAnchor="middle" className={styles.a2aPillText}>A2A</text>
+
+      {/* research agent + agent card */}
+      <rect x="254" y="32" width="122" height="76" rx="11" className={`${styles.a2aBox} ${styles.a2aResearch}`} />
+      <text x="315" y="62" textAnchor="middle" className={styles.a2aTitle}>Research</text>
+      <text x="315" y="78" textAnchor="middle" className={styles.a2aTitle}>Agent</text>
+      <text x="315" y="96" textAnchor="middle" className={styles.a2aSub}>ADK · Gemini</text>
+      <rect x="254" y="116" width="122" height="22" rx="7" className={styles.a2aCard} />
+      <text x="315" y="131" textAnchor="middle" className={styles.a2aSub}>Agent Card</text>
+
+      {/* packets (visible and moving on hover only) */}
+      <circle r="5" className={`${styles.a2aPacket} ${styles.a2aOut}`} />
+      <circle r="5" className={`${styles.a2aPacket} ${styles.a2aBack}`} />
+    </svg>
+  );
+}
+
+export function ProjectCover({ category, variant, diagram }: { category: Category; variant: number; diagram?: 'a2a' }) {
+  if (diagram === 'a2a') {
+    return (
+      <div className={`${styles.cover} ${styles.genai}`} aria-hidden="true">
+        <A2ADiagram />
+      </div>
+    );
+  }
   return (
     <div className={`${styles.cover} ${category === 'genai' ? styles.genai : styles.web}`} aria-hidden="true">
       {category === 'genai' ? (

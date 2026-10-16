@@ -65,7 +65,7 @@ export function Projects({ filter, onFilterChange }: Props) {
             className={`card card-hover spot ${styles.card}`}
             style={{ '--i': i } as CSSProperties}
           >
-            <ProjectCover category={p.category} variant={projects.indexOf(p)} />
+            <ProjectCover category={p.category} variant={projects.indexOf(p)} diagram={p.diagram} />
             <div className={styles.body}>
               <span className={styles.category}>
                 <Icon name={categoryIcons[p.category]} size={12} />
@@ -80,17 +80,33 @@ export function Projects({ filter, onFilterChange }: Props) {
                   </li>
                 ))}
               </ul>
-              {p.url && (
-                <a
-                  href={p.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                  aria-label={`Visit ${p.title} website (opens in a new tab)`}
-                >
-                  Visit site
-                  <Icon name="arrowUpRight" size={14} />
-                </a>
+              {(p.url || p.github) && (
+                <div className={styles.links}>
+                  {p.url && (
+                    <a
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                      aria-label={`Visit ${p.title} website (opens in a new tab)`}
+                    >
+                      Visit site
+                      <Icon name="arrowUpRight" size={14} />
+                    </a>
+                  )}
+                  {p.github && (
+                    <a
+                      href={p.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.link}
+                      aria-label={`View ${p.title} source code on GitHub (opens in a new tab)`}
+                    >
+                      <Icon name="github" size={14} />
+                      GitHub
+                    </a>
+                  )}
+                </div>
               )}
             </div>
           </li>

@@ -137,7 +137,9 @@ export interface Project {
   description: string;
   tags: string[];
   category: Category;
-  url?: string; // leave out if there is no public link
+  url?: string; // live website; leave out if there is no public link
+  github?: string; // source repository
+  diagram?: 'a2a'; // animated architecture diagram used as the card cover
 }
 
 export const projects: Project[] = [
@@ -147,6 +149,8 @@ export const projects: Project[] = [
       'Two specialized agents collaborate through A2A, enabling research delegation and structured summaries powered by Google ADK and Gemini.',
     tags: ['Google ADK', 'A2A', 'Gemini', 'Python'],
     category: 'genai',
+    github: 'https://github.com/usmanshah904/adk-a2a-multi-agent',
+    diagram: 'a2a',
   },
   {
     title: 'AI Agent with Reflection & Guardrails',
