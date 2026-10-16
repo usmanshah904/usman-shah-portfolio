@@ -139,7 +139,7 @@ export interface Project {
   category: Category;
   url?: string; // live website; leave out if there is no public link
   github?: string; // source repository
-  diagram?: 'a2a' | 'guardrails'; // animated architecture diagram used as the card cover
+  diagram?: 'a2a' | 'guardrails' | 'memory'; // animated architecture diagram used as the card cover
 }
 
 export const projects: Project[] = [
@@ -174,6 +174,8 @@ export const projects: Project[] = [
       'A memory-enabled AI agent that retrieves and consolidates past interactions, then applies relevant context to improve responses across successive runs.',
     tags: ['Python', 'Claude Code', 'Agent Memory', 'JSON'],
     category: 'genai',
+    github: 'https://github.com/usmanshah904/self-improving-memory-agent',
+    diagram: 'memory',
   },
   {
     title: 'Vnetrix',

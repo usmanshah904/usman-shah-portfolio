@@ -206,6 +206,60 @@ function GuardrailsDiagram() {
   );
 }
 
+// Persistent-memory project: its loop. On card hover it plays two runs: run 1
+// learns a preference into the store, run 2 reads it back and learns a skill.
+const delay = (s: number) => ({ animationDelay: `${s}s` });
+
+function MemoryDiagram() {
+  return (
+    <svg viewBox="0 0 400 160" className={`${styles.svg} ${styles.mem}`} preserveAspectRatio="xMidYMid meet">
+      {/* links */}
+      <path d="M94 44 H112" className={styles.a2aLink} />
+      <path d="M192 44 H210" className={styles.a2aLink} />
+      <path d="M290 44 H308" className={styles.a2aLink} />
+      <path d="M348 66 V123 H304" className={styles.a2aLink} />
+      <path d="M96 123 H54 V66" className={styles.a2aDiscover} />
+
+      {/* loop */}
+      <rect x="14" y="22" width="80" height="44" rx="10" className={`${styles.a2aBox} ${styles.memRetrieve}`} style={delay(0.5)} />
+      <text x="54" y="41" textAnchor="middle" className={styles.a2aTitle}>Retrieve</text>
+      <text x="54" y="57" textAnchor="middle" className={styles.a2aSub}>relevant only</text>
+      <rect x="112" y="22" width="80" height="44" rx="10" className={`${styles.a2aBox} ${styles.memStep}`} style={delay(1.5)} />
+      <text x="152" y="41" textAnchor="middle" className={styles.a2aTitle}>Respond</text>
+      <text x="152" y="57" textAnchor="middle" className={styles.a2aSub}>Claude</text>
+      <rect x="210" y="22" width="80" height="44" rx="10" className={`${styles.a2aBox} ${styles.memStep}`} style={delay(2.4)} />
+      <text x="250" y="41" textAnchor="middle" className={styles.a2aTitle}>Learn</text>
+      <text x="250" y="57" textAnchor="middle" className={styles.a2aSub}>one memory</text>
+      <rect x="308" y="22" width="80" height="44" rx="10" className={`${styles.a2aBox} ${styles.memSave}`} style={delay(3.2)} />
+      <text x="348" y="41" textAnchor="middle" className={styles.a2aTitle}>Save</text>
+      <text x="348" y="57" textAnchor="middle" className={styles.a2aSub}>merge similar</text>
+
+      {/* store */}
+      <rect x="96" y="98" width="208" height="50" rx="10" className={`${styles.a2aBox} ${styles.memStore}`} style={delay(3.9)} />
+      <text x="200" y="116" textAnchor="middle" className={styles.a2aTitle}>Memory · JSON</text>
+      <g className={styles.memPref}>
+        <rect x="118" y="124" width="84" height="17" rx="8.5" className={styles.memPrefPill} />
+        <text x="160" y="136" textAnchor="middle" className={styles.memPillText}>preference</text>
+      </g>
+      <g className={styles.memSkill}>
+        <rect x="208" y="124" width="74" height="17" rx="8.5" className={styles.memSkillPill} />
+        <text x="245" y="136" textAnchor="middle" className={styles.memPillText}>skill</text>
+      </g>
+      <text x="44" y="100" textAnchor="end" className={styles.a2aSub}>next</text>
+      <text x="44" y="113" textAnchor="end" className={styles.a2aSub}>run</text>
+
+      {/* packets (hover only) */}
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.memHop}`} style={{ offsetPath: "path('M94 44 H112')", ...delay(1.0) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.memHop}`} style={{ offsetPath: "path('M192 44 H210')", ...delay(1.9) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.memHop}`} style={{ offsetPath: "path('M290 44 H308')", ...delay(2.8) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.memHop}`} style={{ offsetPath: "path('M348 66 V123 H304')", ...delay(3.3) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.memRead}`} style={{ offsetPath: "path('M96 123 H54 V66')", ...delay(4.0) }} />
+    </svg>
+  );
+}
+
+export type Diagram = 'a2a' | 'guardrails' | 'memory';
+
 export function ProjectCover({
   category,
   variant,
@@ -213,12 +267,12 @@ export function ProjectCover({
 }: {
   category: Category;
   variant: number;
-  diagram?: 'a2a' | 'guardrails';
+  diagram?: Diagram;
 }) {
   if (diagram) {
     return (
       <div className={`${styles.cover} ${styles.genai}`} aria-hidden="true">
-        {diagram === 'a2a' ? <A2ADiagram /> : <GuardrailsDiagram />}
+        {diagram === 'a2a' ? <A2ADiagram /> : diagram === 'guardrails' ? <GuardrailsDiagram /> : <MemoryDiagram />}
       </div>
     );
   }
