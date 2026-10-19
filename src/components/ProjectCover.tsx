@@ -306,17 +306,57 @@ function SpecDiagram() {
   );
 }
 
+// Website projects: a real full-page screenshot of the live site in a browser
+// frame. On card hover the page scrolls down through its sections and back.
+function SitePreview({ preview, url }: { preview: Preview; url?: string }) {
+  const domain = url ? new URL(url).hostname.replace(/^www\./, '') : '';
+  return (
+    <div className={styles.site}>
+      <div className={styles.siteChrome}>
+        <span />
+        <span />
+        <span />
+        <p>{domain}</p>
+      </div>
+      <div className={styles.siteView}>
+        <img
+          src={preview.src}
+          width={preview.width}
+          height={preview.height}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className={styles.siteShot}
+        />
+      </div>
+    </div>
+  );
+}
+
+type Preview = { src: string; width: number; height: number };
+
 export type Diagram = 'a2a' | 'guardrails' | 'memory' | 'spec';
 
 export function ProjectCover({
   category,
   variant,
   diagram,
+  preview,
+  url,
 }: {
   category: Category;
   variant: number;
   diagram?: Diagram;
+  preview?: Preview;
+  url?: string;
 }) {
+  if (preview) {
+    return (
+      <div className={`${styles.cover} ${styles.web}`} aria-hidden="true">
+        <SitePreview preview={preview} url={url} />
+      </div>
+    );
+  }
   if (diagram) {
     return (
       <div className={`${styles.cover} ${styles.genai}`} aria-hidden="true">

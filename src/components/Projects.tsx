@@ -65,7 +65,7 @@ export function Projects({ filter, onFilterChange }: Props) {
             className={`card card-hover spot ${styles.card}`}
             style={{ '--i': i } as CSSProperties}
           >
-            <ProjectCover category={p.category} variant={projects.indexOf(p)} diagram={p.diagram} />
+            <ProjectCover category={p.category} variant={projects.indexOf(p)} diagram={p.diagram} preview={p.preview} url={p.url} />
             <div className={styles.body}>
               <span className={styles.category}>
                 <Icon name={categoryIcons[p.category]} size={12} />

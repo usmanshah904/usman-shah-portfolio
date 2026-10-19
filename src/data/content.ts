@@ -141,6 +141,7 @@ export interface Project {
   url?: string; // live website; leave out if there is no public link
   github?: string; // source repository
   diagram?: 'a2a' | 'guardrails' | 'memory' | 'spec'; // animated architecture diagram used as the card cover
+  preview?: { src: string; width: number; height: number }; // full-page screenshot of the live site, scrolled on hover
 }
 
 export const projects: Project[] = [
@@ -187,6 +188,7 @@ export const projects: Project[] = [
     tags: ['WordPress', 'Elementor', 'CSS', 'SEO'],
     category: 'web',
     url: 'https://vnetrix.com',
+    preview: { src: '/projects/vnetrix.webp', width: 720, height: 1650 },
   },
   {
     title: 'Usman Anees',
@@ -195,6 +197,7 @@ export const projects: Project[] = [
     tags: ['WordPress', 'Elementor', 'Responsive Design'],
     category: 'web',
     url: 'https://usmananees.com',
+    preview: { src: '/projects/usmananees.webp', width: 720, height: 780 },
   },
 ];
 

@@ -821,3 +821,89 @@
     animation: none;
   }
 }
+
+/* ---------- Website covers: live-site screenshot that scrolls on hover ---------- */
+.site {
+  position: absolute;
+  inset: 14px 9% 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #d6dde8;
+  border-bottom: none;
+  border-radius: 10px 10px 0 0;
+  background: #ffffff;
+  box-shadow: 0 10px 24px -8px rgba(31, 78, 121, 0.22);
+  overflow: hidden;
+  transition: transform 0.6s var(--ease);
+}
+
+:global(.card):hover .site {
+  transform: translateY(-4px);
+}
+
+.siteChrome {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 10px;
+  border-bottom: 1px solid #e6ebf2;
+  background: #f6f8fb;
+}
+
+.siteChrome span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #cfd7e3;
+}
+
+.siteChrome p {
+  margin: 0 auto;
+  padding: 1px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid #e6ebf2;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.siteView {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  container-type: size;
+}
+
+.siteShot {
+  display: block;
+  width: 100%;
+  height: auto;
+  will-change: transform;
+}
+
+/* Scroll from the top to the bottom of the screenshot, pause, and back. */
+:global(.card):hover .siteShot {
+  animation: siteScroll 12s ease-in-out 0.3s infinite;
+}
+
+@keyframes siteScroll {
+  0%,
+  8% {
+    transform: translateY(0);
+  }
+  46%,
+  58% {
+    transform: translateY(calc(-100% + 100cqh));
+  }
+  96%,
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.card):hover .siteShot {
+    animation: none;
+  }
+}

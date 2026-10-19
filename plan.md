@@ -26,7 +26,7 @@ listed here unless he asks for it.
 | `src/main.tsx` | Imports global CSS **first**, then hydrates the prerendered HTML (`hydrateRoot`) or renders in dev (`createRoot`). |
 | `src/entry-server.tsx` + `scripts/prerender.mjs` | Build-time prerender: the whole page is rendered to HTML into `dist/index.html`. |
 | `index.html` | Title, meta description, Open Graph, canonical `https://usmanshah.dev/`, font preload, `color-scheme: only light`, noscript fallback. |
-| `public/` | `Usman_Resume.pdf`, `favicon.svg` (logo), `fonts/outfit-latin.woff2` (+ OFL licence), `robots.txt`, `sitemap.xml`. |
+| `public/` | `Usman_Resume.pdf`, `projects/*.webp` (website-card screenshots), `favicon.svg` (logo), `fonts/outfit-latin.woff2` (+ OFL licence), `robots.txt`, `sitemap.xml`. |
 | `vercel.json` | 1-year immutable cache headers for `/assets/*` and `/fonts/*`. |
 
 ## Commands
@@ -72,6 +72,7 @@ End commit messages with the co-author line the session asks for.
 - Projects come from his real work (multi-agent ADK + A2A, reflection/guardrails agent, persistent-memory agent, spec-driven task manager, Vnetrix, Usman Anees).
 - Project categories (filter tabs): **Gen AI** (3), **Software** (1: Spec-Driven Smart Task Manager, a software-engineering project), **Web** (2). `Category` in `content.ts` drives the tabs, badge icon and cover art (`ProjectCover`: agent graph / task-list app / browser mock).
 - **Project repos and covers:** a project can set `github` (adds a GitHub link on its card) and `diagram` (replaces the generated cover with its real architecture, animated on card hover). Published so far: Multi-Agent ADK + A2A → https://github.com/usmanshah904/adk-a2a-multi-agent (`diagram: 'a2a'`); Reflection & Guardrails → https://github.com/usmanshah904/reflection-guardrails-agent (`diagram: 'guardrails'`); Persistent Memory → https://github.com/usmanshah904/self-improving-memory-agent (`diagram: 'memory'`); Smart Task Manager → https://github.com/usmanshah904/spec-driven-task-manager (`diagram: 'spec'`; it now has a dashboard, 43 tests). All four are published. Each repo gets: README with diagram + real screenshots + a **recorded demo** (`docs/demo.gif` for GitHub, `docs/demo.webp` for the site; any model wait shown as a labelled time-lapse), tests + GitHub Actions, requirements, `.env.example` where keys are needed, MIT licence, and a privacy check before pushing.
+- **Website covers:** the two Web cards use `preview` (a real full-page screenshot of the live site in `public/projects/*.webp`, 720px wide, lazy-loaded) inside a browser frame showing the domain; on card hover it scrolls down and back. Vnetrix's cookie banner was hidden in the capture (never accepted); Usman Anees is cropped above its YouTube embeds, which do not render in headless capture. Re-capture if the sites change.
 - **No public live demos.** Do not expose the ADK web UI or any agent with his API keys to visitors; show recorded demos instead. How outputs (demos, screenshots) appear on the website is the next design task, now that all four projects are published; until then cards keep the diagram cover + GitHub link.
 - When new content is needed, **offer options and let him choose** before adding. Explain technical steps in plain language first.
 
