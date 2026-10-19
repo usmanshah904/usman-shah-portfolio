@@ -59,8 +59,8 @@ End commit messages with the co-author line the session asks for.
 - **Motion:** subtle and "futuristic" (drifting hero glows, rotating border on the hero console, tech strip marquee, staggered reveals, card spotlight). Transform/opacity only; everything respects `prefers-reduced-motion`.
 - **Logo:** code brackets around an AI spark on the brand gradient (`src/components/Logo.tsx`, same drawing in `public/favicon.svg`).
 - **Nav:** not sticky (absolute over the hero, scrolls away), links without a border box, CTA reads **"Let's connect"** (hidden under 420px; menu button instead).
-- **Hero:** label → headline (gradient on "Gen AI Engineer") → intro → buttons (Get in touch, View resume) + email/LinkedIn/WhatsApp icons, with the agent console on the right. No availability badge and no highlight cards (both removed on request).
-- **Footer:** gradient divider, four columns (brand + tagline + socials, Navigate, Services, Connect), bottom bar with © and Back to top. No large faded name wordmark (removed on request). Services column wide enough for one line each on desktop.
+- **Hero:** label → headline (gradient on "Gen AI Engineer") → intro → buttons (**GitHub Profile** → https://github.com/usmanshah904, replacing Get in touch on request; View resume) + email/LinkedIn/WhatsApp icons, with the agent console on the right. No availability badge and no highlight cards (both removed on request).
+- **Footer:** gradient divider, four columns (brand + tagline + socials: email, LinkedIn, GitHub, WhatsApp; Navigate, Services, Connect), bottom bar with © and Back to top. No large faded name wordmark (removed on request). Services column wide enough for one line each on desktop.
 
 ## Content rules
 
