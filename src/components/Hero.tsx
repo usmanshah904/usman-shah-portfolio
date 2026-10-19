@@ -48,9 +48,15 @@ export function Hero() {
           </p>
 
           <div className={`${styles.actions} ${styles.enter}`} style={d(4)}>
-            <a href="#contact" className="btn btn-primary">
-              Get in touch
-              <Icon name="arrowRight" size={16} />
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              aria-label="GitHub Profile (opens in a new tab)"
+            >
+              <Icon name="github" size={16} />
+              GitHub Profile
             </a>
             <a
               href={profile.resume}

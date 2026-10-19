@@ -34,6 +34,11 @@ export function Footer() {
               </a>
             </li>
             <li>
+              <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <Icon name="github" size={16} />
+              </a>
+            </li>
+            <li>
               <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
                 <Icon name="whatsapp" size={16} />
               </a>

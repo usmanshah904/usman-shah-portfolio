@@ -20,6 +20,7 @@ export const profile = {
   whatsapp: 'https://wa.me/923339988968',
   linkedin: 'https://www.linkedin.com/in/usman-shah-se/',
   linkedinDisplay: 'linkedin.com/in/usman-shah-se',
+  github: 'https://github.com/usmanshah904',
   resume: '/Usman_Resume.pdf',
 };
 
