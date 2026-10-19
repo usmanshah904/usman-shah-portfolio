@@ -171,7 +171,7 @@ export const projects: Project[] = [
   {
     title: 'Self-Improving Agent with Persistent Memory',
     description:
-      'A memory-enabled AI agent that retrieves and consolidates past interactions, then applies relevant context to improve responses across successive runs.',
+      'A memory-enabled AI agent that learns reusable preferences and skills from each task, merges duplicates, and applies the relevant ones on later runs.',
     tags: ['Python', 'Claude Code', 'Agent Memory', 'JSON'],
     category: 'genai',
     github: 'https://github.com/usmanshah904/self-improving-memory-agent',
