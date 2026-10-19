@@ -258,7 +258,55 @@ function MemoryDiagram() {
   );
 }
 
-export type Diagram = 'a2a' | 'guardrails' | 'memory';
+// Spec-driven task manager: spec -> app -> tests, then the replanning loop.
+// On card hover: the spec is built, the app parts light up, the tests pass,
+// and a change goes back through the spec.
+function SpecDiagram() {
+  return (
+    <svg viewBox="0 0 400 160" className={`${styles.svg} ${styles.tk}`} preserveAspectRatio="xMidYMid meet">
+      {/* links */}
+      <path d="M112 76 H142" className={styles.a2aLink} />
+      <path d="M266 76 H296" className={styles.a2aLink} />
+      <path d="M342 128 V146 H262 M144 146 H64 V130" className={styles.a2aDiscover} />
+
+      {/* specs */}
+      <rect x="14" y="24" width="98" height="104" rx="10" className={`${styles.a2aBox} ${styles.tkSpec}`} style={delay(0)} />
+      <text x="63" y="48" textAnchor="middle" className={styles.a2aTitle}>Specs</text>
+      <text x="63" y="70" textAnchor="middle" className={styles.a2aSub}>user stories</text>
+      <text x="63" y="86" textAnchor="middle" className={styles.a2aSub}>requirements</text>
+      <text x="63" y="102" textAnchor="middle" className={styles.a2aSub}>AC-1–16</text>
+
+      {/* app */}
+      <rect x="142" y="24" width="124" height="104" rx="10" className={`${styles.a2aBox} ${styles.tkApp}`} />
+      <text x="204" y="44" textAnchor="middle" className={styles.a2aTitle}>React app</text>
+      <rect x="154" y="54" width="100" height="20" rx="6" className={`${styles.tkRow} ${styles.tkPurple}`} style={delay(0.9)} />
+      <text x="204" y="68" textAnchor="middle" className={styles.a2aSub}>Dashboard</text>
+      <rect x="154" y="79" width="100" height="20" rx="6" className={`${styles.tkRow} ${styles.tkCyan}`} style={delay(1.5)} />
+      <text x="204" y="93" textAnchor="middle" className={styles.a2aSub}>useTasks</text>
+      <rect x="154" y="104" width="100" height="18" rx="6" className={`${styles.tkRow} ${styles.tkCyan}`} style={delay(2.1)} />
+      <text x="204" y="117" textAnchor="middle" className={styles.a2aSub}>storage</text>
+
+      {/* tests */}
+      <rect x="296" y="24" width="92" height="104" rx="10" className={`${styles.a2aBox} ${styles.tkTests}`} style={delay(3.2)} />
+      <text x="342" y="48" textAnchor="middle" className={styles.a2aTitle}>Tests</text>
+      {[0, 1, 2].map((i) => (
+        <g key={i} className={styles.tkTick} style={delay(3.5 + i * 0.35)}>
+          <circle cx={318 + i * 24} cy="74" r="8.5" className={styles.tkTickDot} />
+          <path d={`M${314 + i * 24} 74 l3 3 l5 -6`} className={styles.tkTickMark} />
+        </g>
+      ))}
+      <text x="342" y="108" textAnchor="middle" className={`${styles.a2aTitle} ${styles.tkPass}`}>43 pass</text>
+      <text x="203" y="150" textAnchor="middle" className={styles.a2aSub}>change → spec first</text>
+
+      {/* packets (hover only) */}
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.tkHop}`} style={{ offsetPath: "path('M112 76 H142')", ...delay(0.3) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.tkHop}`} style={{ offsetPath: "path('M266 76 H296')", ...delay(2.7) }} />
+      <circle r="4.5" className={`${styles.a2aPacket} ${styles.tkBack}`} style={{ offsetPath: "path('M342 128 V146 H64 V130')", ...delay(4.5) }} />
+    </svg>
+  );
+}
+
+export type Diagram = 'a2a' | 'guardrails' | 'memory' | 'spec';
 
 export function ProjectCover({
   category,
@@ -272,7 +320,15 @@ export function ProjectCover({
   if (diagram) {
     return (
       <div className={`${styles.cover} ${styles.genai}`} aria-hidden="true">
-        {diagram === 'a2a' ? <A2ADiagram /> : diagram === 'guardrails' ? <GuardrailsDiagram /> : <MemoryDiagram />}
+        {diagram === 'a2a' ? (
+          <A2ADiagram />
+        ) : diagram === 'guardrails' ? (
+          <GuardrailsDiagram />
+        ) : diagram === 'memory' ? (
+          <MemoryDiagram />
+        ) : (
+          <SpecDiagram />
+        )}
       </div>
     );
   }

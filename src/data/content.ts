@@ -139,7 +139,7 @@ export interface Project {
   category: Category;
   url?: string; // live website; leave out if there is no public link
   github?: string; // source repository
-  diagram?: 'a2a' | 'guardrails' | 'memory'; // animated architecture diagram used as the card cover
+  diagram?: 'a2a' | 'guardrails' | 'memory' | 'spec'; // animated architecture diagram used as the card cover
 }
 
 export const projects: Project[] = [
@@ -164,9 +164,11 @@ export const projects: Project[] = [
   {
     title: 'Spec-Driven Smart Task Manager',
     description:
-      'A React and TypeScript task manager built from a structured specification, featuring task workflows, search, filtering, persistent storage, and 20 passing automated tests.',
+      'A React and TypeScript task manager built from a structured specification, featuring task workflows, search, filtering, persistent storage, and 43 passing automated tests.',
     tags: ['React', 'TypeScript', 'Vite', 'Vitest'],
     category: 'software',
+    github: 'https://github.com/usmanshah904/spec-driven-task-manager',
+    diagram: 'spec',
   },
   {
     title: 'Self-Improving Agent with Persistent Memory',

@@ -675,3 +675,149 @@
     animation: none;
   }
 }
+
+/* ---------- Spec-driven task manager cover ---------- */
+.tkSpec {
+  stroke: #1f4e79;
+}
+
+.tkApp {
+  stroke: #5b5bd6;
+}
+
+.tkTests {
+  stroke: #067647;
+}
+
+.tkRow {
+  fill: #f4f7fb;
+  stroke-width: 1.1;
+}
+
+.tkPurple {
+  stroke: #5b5bd6;
+}
+
+.tkCyan {
+  stroke: #0891b2;
+}
+
+.tkTickDot {
+  fill: #ecfdf3;
+  stroke: #067647;
+  stroke-width: 1.2;
+}
+
+.tkTickMark {
+  fill: none;
+  stroke: #067647;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.tkPass {
+  fill: #067647;
+}
+
+.tkHop {
+  fill: #5b5bd6;
+}
+
+.tkBack {
+  fill: #647083;
+}
+
+/* One hover loop (6 s): spec -> app parts -> tests pass -> change goes back to the spec */
+:global(.card):hover .tkSpec,
+:global(.card):hover .tkRow,
+:global(.card):hover .tkTests {
+  animation: tkGlow 6s ease infinite backwards;
+}
+
+:global(.card):hover .tkHop {
+  animation: tkHop 6s linear infinite backwards;
+}
+
+:global(.card):hover .tkBack {
+  animation: tkBack 6s linear infinite backwards;
+}
+
+:global(.card):hover .tkTick {
+  animation: tkTick 6s ease infinite backwards;
+}
+
+@keyframes tkGlow {
+  0%,
+  16%,
+  100% {
+    filter: none;
+  }
+  3%,
+  12% {
+    filter: drop-shadow(0 0 6px rgba(91, 91, 214, 0.6));
+  }
+}
+
+@keyframes tkHop {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  2% {
+    opacity: 1;
+  }
+  9% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  11%,
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes tkBack {
+  0% {
+    offset-distance: 0%;
+    opacity: 0;
+  }
+  3% {
+    opacity: 1;
+  }
+  22% {
+    offset-distance: 100%;
+    opacity: 1;
+  }
+  25%,
+  100% {
+    offset-distance: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes tkTick {
+  0% {
+    opacity: 0;
+  }
+  4%,
+  28% {
+    opacity: 1;
+  }
+  33%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.card):hover .tkSpec,
+  :global(.card):hover .tkRow,
+  :global(.card):hover .tkTests,
+  :global(.card):hover .tkHop,
+  :global(.card):hover .tkBack,
+  :global(.card):hover .tkTick {
+    animation: none;
+  }
+}
