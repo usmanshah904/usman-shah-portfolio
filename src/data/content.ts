@@ -164,7 +164,7 @@ export const projects: Project[] = [
   {
     title: 'Spec-Driven Smart Task Manager',
     description:
-      'A React and TypeScript task manager built from a structured specification, featuring task workflows, search, filtering, persistent storage, and 43 passing automated tests.',
+      'A spec-driven React and TypeScript task manager with a live dashboard: priorities, due dates, categories, progress charts, and 43 automated tests mapped to its acceptance criteria.',
     tags: ['React', 'TypeScript', 'Vite', 'Vitest'],
     category: 'software',
     github: 'https://github.com/usmanshah904/spec-driven-task-manager',
