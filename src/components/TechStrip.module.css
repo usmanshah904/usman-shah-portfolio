@@ -1,7 +1,7 @@
 .strip {
   position: relative;
   overflow: hidden;
-  padding: 26px 0;
+  padding: 11px 0;
   background: var(--ink-bg);
   color: var(--on-ink);
 }
@@ -25,17 +25,17 @@
 .list li {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
-  padding: 0 14px;
-  font-size: clamp(1.0625rem, 0.95rem + 0.6vw, 1.5rem);
-  font-weight: 700;
+  gap: 16px;
+  padding: 0 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background: var(--sage-light);
 }
