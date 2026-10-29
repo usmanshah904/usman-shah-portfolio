@@ -1,25 +1,14 @@
 .footer {
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(rgba(91, 91, 214, 0.12) 1px, transparent 1px) 0 0 / 22px 22px,
-    linear-gradient(180deg, var(--surface) 0%, var(--tint-violet) 100%);
-  color: var(--text);
-}
-
-/* Gradient divider separating the footer from the contact section */
-.topLine {
-  height: 2px;
-  background: var(--gradient);
+  background: var(--ink-bg);
+  color: var(--on-ink);
 }
 
 .main {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.7fr) minmax(0, 1.35fr) minmax(0, 0.7fr);
-  gap: 32px 40px;
-  padding-top: 56px;
-  padding-bottom: 48px;
+  gap: 40px 48px;
+  padding-top: 88px;
+  padding-bottom: 64px;
 }
 
 @media (max-width: 860px) {
@@ -35,115 +24,81 @@
 @media (max-width: 520px) {
   .main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px 20px;
-    padding-top: 44px;
+    gap: 36px 20px;
+    padding-top: 64px;
   }
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  color: var(--text);
-  font-family: var(--display);
-  font-size: 1rem;
-  font-weight: 700;
+  gap: 12px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
-
 
 .tagline {
   max-width: 34ch;
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 0.875rem;
-  line-height: 1.65;
+  margin-top: 16px;
+  color: var(--on-ink-muted);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .social {
   display: flex;
-  gap: 8px;
-  margin-top: 16px;
+  gap: 10px;
+  margin-top: 24px;
 }
 
 .social a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--surface);
-  color: var(--muted);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #2b3532;
+  color: var(--on-ink);
   transition:
-    color 0.2s var(--ease),
-    border-color 0.2s var(--ease),
-    transform 0.2s var(--ease);
+    background-color 0.3s var(--ease),
+    transform 0.3s var(--ease);
 }
 
-.social a:hover {
-  color: var(--indigo);
-  border-color: var(--accent-line);
-  transform: translateY(-2px);
+.social a:hover,
+.social a:focus-visible {
+  background: var(--sage);
+  transform: translateY(-3px);
 }
 
 .colTitle {
-  margin-bottom: 12px;
-  color: var(--text);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  margin-bottom: 18px;
+  color: var(--sage-light);
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .col ul {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 12px;
 }
 
 .col a {
-  position: relative;
-  display: inline-block;
-  padding: 4px 0;
-  color: var(--muted);
-  font-size: 0.875rem;
-  transition: color 0.2s var(--ease);
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap;
 }
 
-/* Underline that slides in on hover */
-.col a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 2px;
-  width: 100%;
-  height: 1px;
-  background: var(--indigo);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s var(--ease);
-}
-
-.col a:hover {
-  color: var(--text);
-}
-
-/* Each service stays on one line where there is room */
-@media (min-width: 861px) {
+@media (max-width: 520px) {
   .col a {
-    white-space: nowrap;
+    white-space: normal;
   }
 }
 
-.col a:hover::after {
-  transform: scaleX(1);
-}
-
 .bottom {
-  position: relative;
-  border-top: 1px solid var(--border);
-  background: var(--surface-glass);
+  background: #161c1a;
 }
 
 .bottomInner {
@@ -152,39 +107,37 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 16px;
-  padding-bottom: 16px;
-  color: var(--muted);
-  font-size: 0.8125rem;
+  padding-top: 22px;
+  padding-bottom: 22px;
+  color: var(--on-ink-muted);
+  font-size: 1rem;
 }
 
 .toTop {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--text);
-  font-family: var(--display);
-  font-weight: 500;
+  gap: 10px;
+  color: var(--on-ink);
+  font-weight: 600;
 }
 
 .toTopIcon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  transform: rotate(-45deg);
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #2b3532;
   transition:
-    transform 0.25s var(--ease),
-    border-color 0.25s var(--ease),
-    color 0.25s var(--ease);
+    background-color 0.3s var(--ease),
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.toTopIcon svg {
+  transform: rotate(-45deg);
 }
 
 .toTop:hover .toTopIcon {
-  border-color: var(--accent-line);
-  color: var(--indigo);
-  transform: rotate(-45deg) translate(2px, -2px);
+  background: var(--sage);
+  transform: translateY(-3px) scale(1.08);
 }

@@ -4,46 +4,27 @@ import { Icon } from './Icon';
 import { Section } from './Section';
 import styles from './Experience.module.css';
 
-// Vertical timeline, adapted from the 21st.dev "Experience Timeline" block
-// (icon on the rail, organisation row, role, dates, description, badges).
+// Timeline: dates on the left, the role on the right, joined by a rail that draws in.
 export function Experience() {
   return (
-    <Section id="experience" num="05" label={sections.experience.label} title={sections.experience.title} tint="white">
+    <Section id="experience" title={sections.experience.title} ground="bg">
       <ol className={`${styles.timeline} stagger`}>
         {experience.map((item, i) => (
-          <li key={item.role} className={styles.item} style={{ '--i': i } as CSSProperties}>
-            <span className={`${styles.marker} ${item.current ? styles.markerCurrent : ''}`} aria-hidden="true">
-              <Icon name={item.icon} size={16} />
-            </span>
+          <li key={item.role} className={styles.item} style={{ '--i': i * 2 + 1 } as CSSProperties}>
+            <div className={styles.when}>
+              <p className={styles.period}>{item.period}</p>
+              <p className={styles.location}>
+                <Icon name="mapPin" size={14} />
+                {item.location}
+              </p>
+            </div>
 
-            <div className={`card card-hover spot ${styles.card}`}>
-              <div className={styles.head}>
-                <div>
-                  <h3 className={styles.role}>{item.role}</h3>
-                  {item.org && (
-                    <p className={styles.org}>
-                      <Icon name="building" size={13} />
-                      {item.org}
-                    </p>
-                  )}
-                </div>
-                <div className={styles.meta}>
-                  <div className={styles.metaRow}>
-                    {item.current && <span className={styles.current}>Current</span>}
-                    <span className={styles.period}>
-                      <Icon name="calendar" size={13} />
-                      {item.period}
-                    </span>
-                  </div>
-                  <span className={styles.location}>
-                    <Icon name="mapPin" size={13} />
-                    {item.location}
-                  </span>
-                </div>
-              </div>
+            <span className={`${styles.marker} ${item.current ? styles.markerCurrent : ''}`} aria-hidden="true" />
 
+            <div className={styles.card}>
+              <h3 className={styles.role}>{item.role}</h3>
+              {item.org && <p className={styles.org}>{item.org}</p>}
               <p className={styles.text}>{item.text}</p>
-
               <ul className="tag-list" aria-label="Focus areas">
                 {item.tags.map((t) => (
                   <li key={t} className="tag">

@@ -4,3 +4,6 @@ dist
 *.log
 dist-ssr
 .claude
+
+# Design-check output (taste-skill)
+.taste-skill/

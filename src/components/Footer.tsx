@@ -13,12 +13,10 @@ const connect = [
 export function Footer() {
   return (
     <footer className={styles.footer}>
-      <div className={styles.topLine} aria-hidden="true" />
-
       <div className={`container ${styles.main}`}>
         <div className={styles.brandCol}>
           <a href="#top" className={styles.brand}>
-            <Logo size={32} />
+            <Logo size={32} light />
             {profile.name}
           </a>
           <p className={styles.tagline}>{footer.tagline}</p>
@@ -51,7 +49,7 @@ export function Footer() {
           <ul>
             {navLinks.map((l) => (
               <li key={l.href}>
-                <a href={l.href}>{l.label}</a>
+                <a href={l.href} className="link-line">{l.label}</a>
               </li>
             ))}
           </ul>
@@ -62,7 +60,7 @@ export function Footer() {
           <ul>
             {services.flatMap((g) => g.items).map((s) => (
               <li key={s.title}>
-                <a href="#services">{s.title}</a>
+                <a href="#services" className="link-line">{s.title}</a>
               </li>
             ))}
           </ul>
@@ -75,6 +73,7 @@ export function Footer() {
               <li key={c.label}>
                 <a
                   href={c.href}
+                  className="link-line"
                   {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 >
                   {c.label}

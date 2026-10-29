@@ -149,18 +149,11 @@ export function ContactForm() {
       <input type="checkbox" name="botcheck" className={styles.honeypot} tabIndex={-1} aria-hidden="true" />
 
       <div className={styles.footer}>
-        <button type="submit" className={`btn btn-primary ${styles.submit}`} disabled={pending} aria-busy={pending}>
-          {pending ? (
-            <>
-              <span className={styles.spinner} aria-hidden="true" />
-              Sending…
-            </>
-          ) : (
-            <>
-              Send message
-              <Icon name="send" size={17} />
-            </>
-          )}
+        <button type="submit" className={`btn ${styles.submit}`} disabled={pending} aria-busy={pending}>
+          {pending ? 'Sending…' : 'Send message'}
+          <span className="btn-badge" aria-hidden="true">
+            {pending ? <span className={styles.spinner} /> : <Icon name="send" size={16} />}
+          </span>
         </button>
 
         <p role="status" className={`${styles.status} ${styles.ok}`}>

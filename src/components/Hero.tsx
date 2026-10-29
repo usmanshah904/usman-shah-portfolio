@@ -1,130 +1,154 @@
-import type { CSSProperties } from 'react';
+import { useEffect, useState, type CSSProperties } from 'react';
 import { hero, profile } from '../data/content';
+import { ButtonLink } from './Button';
 import { Icon } from './Icon';
 import styles from './Hero.module.css';
 
-// Decorative console that mirrors the multi-agent project. Hidden from screen readers.
-const logLines = [
-  { kind: 'cmd', text: 'run summary_agent --task "latest RAG research"' },
-  { kind: 'out', text: 'summary_agent → delegating research over A2A' },
-  { kind: 'in', text: 'research_agent ← findings returned' },
-  { kind: 'ok', text: 'guardrails: unsupported claims blocked' },
-  { kind: 'ok', text: 'summary ready' },
+// Real outputs from the published projects, shown in turn beside the headline.
+const showcase = [
+  {
+    label: 'Traces',
+    project: 'Multi-Agent System with Google ADK and A2A',
+    src: '/projects/a2a-traces.webp',
+    width: 1280,
+    height: 703,
+    alt: 'ADK web interface showing the summary agent calling the research agent over A2A',
+  },
+  {
+    label: 'Report',
+    project: 'AI Agent with Reflection and Guardrails',
+    src: '/projects/guardrails-blocked.webp',
+    width: 1280,
+    height: 1559,
+    alt: 'HTML report of a blocked run, with the unsupported claim highlighted',
+  },
+  {
+    label: 'Dashboard',
+    project: 'Spec-Driven Smart Task Manager',
+    src: '/projects/task-dashboard.webp',
+    width: 1280,
+    height: 1000,
+    alt: 'Task manager dashboard with stat cards, progress ring and charts',
+  },
 ];
 
+const SLIDE_MS = 5000;
 const d = (n: number) => ({ '--d': n }) as CSSProperties;
 
 export function Hero() {
   const [lead, rest] = hero.headline.split(' & ');
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  // Advance on a timer, except when paused or when the visitor prefers less motion.
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const timer = window.setTimeout(() => setActive((a) => (a + 1) % showcase.length), SLIDE_MS);
+    return () => window.clearTimeout(timer);
+  }, [active, paused]);
+
+  const current = showcase[active];
 
   return (
     <section id="top" className={styles.hero} aria-labelledby="hero-title">
-      <div className={styles.backdrop} aria-hidden="true">
-        <span className={`${styles.blob} ${styles.blobA}`} />
-        <span className={`${styles.blob} ${styles.blobB}`} />
-        <span className={`${styles.blob} ${styles.blobC}`} />
-      </div>
-
       <div className={`container ${styles.grid}`}>
-        <div className={styles.copy}>
-          <p className={`${styles.label} ${styles.enter}`} style={d(1)}>
-            {hero.label}
-          </p>
-
-          <h1 id="hero-title" className={`${styles.title} ${styles.enterSlide}`}>
-            {rest ? (
-              <>
-                <span className="gradient-text">{lead}</span>{' '}
-                <br />
-                &amp; {rest}
-              </>
-            ) : (
-              hero.headline
+        <h1 id="hero-title" className={styles.title}>
+            <span className={styles.line}>
+              <span style={d(0)}>{rest ? lead : hero.headline}</span>
+            </span>
+            {rest && (
+              <span className={styles.line}>
+                <span style={d(1)}>&amp; {rest}</span>
+              </span>
             )}
           </h1>
 
-          <p className={`${styles.subtext} ${styles.enterSlide}`}>
+        <div className={styles.copy}>
+          <p className={`${styles.subtext} ${styles.slide}`} style={d(2)}>
             {hero.subtext}
           </p>
 
           <div className={`${styles.actions} ${styles.enter}`} style={d(4)}>
-            <a
+            <ButtonLink
               href={profile.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
+              label="GitHub Profile"
+              external
               aria-label="GitHub Profile (opens in a new tab)"
-            >
-              <Icon name="github" size={16} />
-              GitHub Profile
-            </a>
-            <a
+            />
+            <ButtonLink
               href={profile.resume}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-outline"
+              label="View resume"
+              icon="file"
+              external
               aria-label="View resume (PDF, opens in a new tab)"
-            >
-              <Icon name="file" size={16} />
-              View resume
+            />
+          </div>
+
+          <ul className={`${styles.social} ${styles.enter}`} style={d(5)} aria-label="Contact links">
+            <li>
+              <a href={`mailto:${profile.email}`} aria-label="Email">
+                <Icon name="mail" size={18} />
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <Icon name="linkedin" size={18} />
+              </a>
+            </li>
+            <li>
+              <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                <Icon name="whatsapp" size={18} />
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <figure
+          className={`${styles.showcase} ${styles.enter}`}
+          style={d(3)}
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+          onFocus={() => setPaused(true)}
+          onBlur={() => setPaused(false)}
+        >
+          <div className={styles.screen}>
+            {showcase.map((s, i) => (
+              <img
+                key={s.src}
+                src={s.src}
+                width={s.width}
+                height={s.height}
+                alt={i === active ? s.alt : ''}
+                aria-hidden={i === active ? undefined : true}
+                className={`${styles.shot} ${i === active ? styles.shotActive : ''}`}
+                loading={i === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            ))}
+          </div>
+          <figcaption className={styles.caption}>
+            <a href="#projects" className={styles.project}>
+              <span className="link-line">{current.project}</span>
+              <Icon name="arrowRight" size={16} />
             </a>
-            <ul className={styles.social} aria-label="Contact links">
-              <li>
-                <a href={`mailto:${profile.email}`} aria-label="Email">
-                  <Icon name="mail" size={18} />
-                </a>
-              </li>
-              <li>
-                <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <Icon name="linkedin" size={18} />
-                </a>
-              </li>
-              <li>
-                <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-                  <Icon name="whatsapp" size={18} />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className={`${styles.visual} ${styles.enter}`} style={d(3)} aria-hidden="true">
-          <div className={styles.frame}>
-            <div className={styles.console}>
-              <div className={styles.chrome}>
-                <span />
-                <span />
-                <span />
-                <p>a2a-session.log</p>
-                <em className={styles.live}>live</em>
-              </div>
-
-              <div className={styles.diagram}>
-                <div className={styles.node}>
-                  <Icon name="sparkle" size={15} />
-                  Summary Agent
-                </div>
-                <div className={styles.wire}>
-                  <span className={styles.packet} />
-                  <em>A2A</em>
-                </div>
-                <div className={styles.node}>
-                  <Icon name="search" size={15} />
-                  Research Agent
-                </div>
-              </div>
-
-              <ol className={styles.log}>
-                {logLines.map((line, i) => (
-                  <li key={i} className={styles[line.kind]} style={{ '--l': i } as CSSProperties}>
-                    {line.text}
-                  </li>
-                ))}
-                <li className={styles.cursor} style={{ '--l': logLines.length } as CSSProperties} />
-              </ol>
+            <div className={styles.tabs} role="group" aria-label="Project outputs">
+              {showcase.map((s, i) => (
+                <button
+                  key={s.label}
+                  type="button"
+                  className={styles.tab}
+                  aria-pressed={i === active}
+                  onClick={() => setActive(i)}
+                >
+                  {i === active && !paused && (
+                    <span key={active} className={styles.progress} aria-hidden="true" />
+                  )}
+                  <span className={styles.tabLabel}>{s.label}</span>
+                </button>
+              ))}
             </div>
-          </div>
-        </div>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

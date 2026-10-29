@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { navLinks, profile } from '../data/content';
+import { ButtonLink } from './Button';
 import { Icon } from './Icon';
 import { Logo } from './Logo';
 import styles from './Nav.module.css';
@@ -33,7 +34,7 @@ export function Nav() {
         <ul id="nav-menu" className={`${styles.links} ${open ? styles.open : ''}`}>
           {navLinks.map((link) => (
             <li key={link.href}>
-              <a href={link.href} onClick={() => setOpen(false)}>
+              <a href={link.href} className="link-line" onClick={() => setOpen(false)}>
                 {link.label}
               </a>
             </li>
@@ -41,9 +42,7 @@ export function Nav() {
         </ul>
 
         <div className={styles.right}>
-          <a href="#contact" className={`btn ${styles.cta}`} onClick={() => setOpen(false)}>
-            Let&apos;s connect
-          </a>
+          <ButtonLink href="#contact" label="Let's connect" className={styles.cta} onClick={() => setOpen(false)} />
           <button
             type="button"
             className={styles.toggle}

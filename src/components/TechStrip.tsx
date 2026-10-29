@@ -12,7 +12,7 @@ export function TechStrip() {
           <ul key={copy} className={styles.list}>
             {techStrip.map((t) => (
               <li key={t}>
-                <span className={styles.spark}>✦</span>
+                <span className={styles.dot} aria-hidden="true" />
                 {t}
               </li>
             ))}

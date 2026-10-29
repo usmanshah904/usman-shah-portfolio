@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-labelledby="t d">
+  <title id="t">Spec-driven smart task manager</title>
+  <desc id="d">The specifications define user stories, requirements and acceptance criteria. The React app implements them: dashboard and task list components on top of the useTasks hook, pure helpers for filtering and statistics, and validated browser storage. 43 automated tests check every acceptance criterion; when requirements change, the specification is updated first.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#1C2321"/>
+    </marker>
+    <marker id="arrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#5C6660"/>
+    </marker>
+    <linearGradient id="brand" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1C2321"/><stop offset="0.55" stop-color="#3F6B55"/><stop offset="1" stop-color="#5E8C76"/>
+    </linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="#1C2321" fill-opacity="0.08"/>
+    </pattern>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    text { font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif; fill: #1C2321; }
+    .h { font-size: 22px; font-weight: 700; }
+    .sub { font-size: 14px; fill: #48524D; }
+    .title { font-size: 16px; font-weight: 700; }
+    .small-title { font-size: 14px; font-weight: 700; }
+    .line { font-size: 13px; fill: #48524D; }
+    .code { font-family: Consolas, "SF Mono", Menlo, monospace; font-size: 12.5px; fill: #1C2321; }
+    .label { font-size: 12px; font-weight: 600; fill: #5C6660; letter-spacing: 0.05em; }
+    .small { font-size: 12px; fill: #48524D; }
+    .tick { font-size: 13px; font-weight: 700; fill: #067647; }
+    @media (prefers-reduced-motion: reduce) { .live { display: none; } }
+  </style>
+
+  <rect width="1200" height="600" rx="20" fill="#F7F8F4"/>
+  <rect width="1200" height="600" rx="20" fill="url(#dots)"/>
+  <rect x="0" y="0" width="1200" height="5" fill="url(#brand)"/>
+  <text x="40" y="52" class="h">Specify → implement → validate</text>
+  <text x="40" y="78" class="sub">Every feature starts as an acceptance criterion in the spec and is only done when its test passes</text>
+
+  <!-- glows -->
+
+  <g class="live">
+  <rect x="36" y="126" width="258" height="348" rx="20" fill="#1C2321" fill-opacity="0.10"
+        stroke="#1C2321" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.0167;0.0375;0.1125;0.1333;1.0000"/>
+  </rect>
+  <rect x="606" y="176" width="248" height="100" rx="16" fill="#3F6B55" fill-opacity="0.10"
+        stroke="#3F6B55" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.1667;0.1875;0.2292;0.2500;1.0000"/>
+  </rect>
+  <rect x="346" y="292" width="248" height="78" rx="16" fill="#5E8C76" fill-opacity="0.10"
+        stroke="#5E8C76" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.2500;0.2708;0.3125;0.3333;1.0000"/>
+  </rect>
+  <rect x="346" y="386" width="508" height="64" rx="16" fill="#5E8C76" fill-opacity="0.10"
+        stroke="#5E8C76" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.3167;0.3375;0.3625;0.3833;1.0000"/>
+  </rect>
+  <rect x="606" y="292" width="248" height="78" rx="16" fill="#5E8C76" fill-opacity="0.10"
+        stroke="#5E8C76" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.3583;0.3792;0.4042;0.4250;1.0000"/>
+  </rect>
+  <rect x="346" y="176" width="248" height="100" rx="16" fill="#3F6B55" fill-opacity="0.10"
+        stroke="#3F6B55" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.4250;0.4458;0.4792;0.5000;1.0000"/>
+  </rect>
+  <rect x="906" y="126" width="258" height="348" rx="20" fill="#067647" fill-opacity="0.10"
+        stroke="#067647" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.5417;0.5625;0.7625;0.7833;1.0000"/>
+  </rect>
+  <rect x="36" y="126" width="258" height="348" rx="20" fill="#1C2321" fill-opacity="0.10"
+        stroke="#1C2321" stroke-width="5" opacity="0" filter="url(#glow)">
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.9333;0.9542;0.9750;0.9958;1.0000"/>
+  </rect>
+  </g>
+
+
+  <!-- Specs -->
+  <rect x="40" y="130" width="250" height="340" rx="16" fill="#ffffff" stroke="#1C2321" stroke-width="2"/>
+  <text x="58" y="122" class="label">1 · SPECS  (specs/)</text>
+  <rect x="56" y="152" width="218" height="78" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="72" y="184" class="code">constitution.md</text><text x="72" y="206" class="small">principles &amp; workflow</text>
+  <rect x="56" y="252" width="218" height="78" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="72" y="284" class="code">feature-spec.md</text><text x="72" y="306" class="small">US-1–11 · FR-1–12 · AC-1–16</text>
+  <rect x="56" y="352" width="218" height="78" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="72" y="384" class="code">roadmap.md</text><text x="72" y="406" class="small">phases 1–8 (8: dashboard)</text>
+
+  <!-- App -->
+  <rect x="330" y="130" width="540" height="340" rx="16" fill="#ffffff" stroke="#3F6B55" stroke-width="2"/>
+  <text x="348" y="122" class="label">2 · APP  (React + TypeScript, task-manager/)</text>
+  <rect x="350" y="180" width="240" height="92" rx="12" fill="#ffffff" stroke="#3F6B55" stroke-width="1.4"/><text x="366" y="208" class="small-title">Dashboard</text><text x="366" y="230" class="line">stat cards · progress ring</text><text x="366" y="249" class="line">7-day bars · category donut</text>
+  <rect x="610" y="180" width="240" height="92" rx="12" fill="#ffffff" stroke="#3F6B55" stroke-width="1.4"/><text x="626" y="208" class="small-title">Task list</text><text x="626" y="230" class="line">add with priority, category, due</text><text x="626" y="249" class="line">search · status · category</text>
+  <rect x="350" y="296" width="240" height="70" rx="12" fill="#ffffff" stroke="#5E8C76" stroke-width="1.4"/><text x="366" y="324" class="small-title">useTasks()</text><text x="366" y="346" class="line">add · toggle · delete · sample</text>
+  <rect x="610" y="296" width="240" height="70" rx="12" fill="#ffffff" stroke="#5E8C76" stroke-width="1.4"/><text x="626" y="324" class="small-title">Pure helpers</text><text x="626" y="346" class="line">computeStats · filterTasks · dueStatus</text>
+  <rect x="350" y="390" width="500" height="56" rx="12" fill="#EEF0EA" stroke="#C9D1C4"/>
+  <text x="366" y="414" class="code">storage.ts</text>
+  <text x="366" y="434" class="small">localStorage · validates saved data · old tasks get defaults</text>
+  <path d="M470 296 V274" stroke="#5E8C76" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M590 331 H608" stroke="#5E8C76" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M730 296 V274" stroke="#5E8C76" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <path d="M470 366 V388" stroke="#5E8C76" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <!-- Tests -->
+  <rect x="910" y="130" width="250" height="340" rx="16" fill="#ffffff" stroke="#067647" stroke-width="2"/>
+  <text x="928" y="122" class="label">3 · TESTS  (Vitest, 43)</text>
+  <text x="928" y="166" class="small">one test group per criterion</text>
+  <rect x="926" y="196" width="218" height="66" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="942" y="224" class="small-title">AC-1 – AC-8</text><text x="942" y="244" class="small">MVP: create … persist</text>
+  <rect x="926" y="276" width="218" height="66" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="942" y="304" class="small-title">AC-9 – AC-16</text><text x="942" y="324" class="small">dashboard, sample data</text>
+  <rect x="926" y="356" width="218" height="66" rx="10" fill="#EEF0EA" stroke="#D3DACE"/><text x="942" y="384" class="small-title">Helpers &amp; storage</text><text x="942" y="404" class="small">stats, dates, filters, old data</text>
+
+  <!-- flow -->
+  <path d="M290 300 H328" fill="none" stroke="#1C2321" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <text x="309" y="290" text-anchor="middle" class="small">build</text>
+  <path d="M870 300 H908" fill="none" stroke="#1C2321" stroke-width="2.2" marker-end="url(#arrow)"/>
+  <text x="889" y="290" text-anchor="middle" class="small">check</text>
+  <path d="M1035 470 V520 H165 V472" fill="none" stroke="#5C6660" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arrowMuted)"/>
+  <text x="600" y="540" text-anchor="middle" class="small">requirements change → update the spec first (Phase 6 replanning), then build and re-validate</text>
+  <text x="40" y="580" class="line">The dashboard was added this way: US-7–11, FR-7–12 and AC-9–16 were written into the spec before any code.</text>
+
+  <g class="live">
+  <circle r="6.5" fill="#1C2321" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M290 300 H328"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.1083;0.1583;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.1083;0.1183;0.1483;0.1583;1.0000"/>
+  </circle>
+  <circle r="6.5" fill="#3F6B55" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M730 274 V296"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.2250;0.2583;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.2250;0.2350;0.2483;0.2583;1.0000"/>
+  </circle>
+  <circle r="6.5" fill="#5E8C76" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M470 366 V388"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.2833;0.3167;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.2833;0.2933;0.3067;0.3167;1.0000"/>
+  </circle>
+  <circle r="6.5" fill="#5E8C76" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M590 331 H608"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.3333;0.3667;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.3333;0.3433;0.3567;0.3667;1.0000"/>
+  </circle>
+  <circle r="6.5" fill="#5E8C76" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M470 296 V274"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.4000;0.4333;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.4000;0.4100;0.4233;0.4333;1.0000"/>
+  </circle>
+  <circle r="6.5" fill="#3F6B55" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M870 300 H908"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.5000;0.5500;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.5000;0.5100;0.5400;0.5500;1.0000"/>
+  </circle>
+  <g opacity="0"><circle cx="1124" cy="229" r="11" fill="#ECFDF3" stroke="#067647" stroke-width="1.4"/><text x="1124" y="234" text-anchor="middle" class="tick">✓</text>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.5750;0.6000;0.9500;0.9750;1.0000"/>
+  </g>
+  <g opacity="0"><circle cx="1124" cy="309" r="11" fill="#ECFDF3" stroke="#067647" stroke-width="1.4"/><text x="1124" y="314" text-anchor="middle" class="tick">✓</text>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.6250;0.6500;0.9500;0.9750;1.0000"/>
+  </g>
+  <g opacity="0"><circle cx="1124" cy="389" r="11" fill="#ECFDF3" stroke="#067647" stroke-width="1.4"/><text x="1124" y="394" text-anchor="middle" class="tick">✓</text>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.6750;0.7000;0.9500;0.9750;1.0000"/>
+  </g>
+  <g opacity="0"><rect x="962" y="434" width="146" height="24" rx="12" fill="#ECFDF3" stroke="#067647"/><text x="1035" y="450" text-anchor="middle" class="tick" style="font-size:12px">43 passing</text>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.7167;0.7417;0.9500;0.9750;1.0000"/>
+  </g>
+  <circle r="6.5" fill="#5C6660" opacity="0" filter="url(#glow)">
+    <animateMotion dur="12.0s" repeatCount="indefinite" path="M1035 470 V520 H165 V472"
+      keyPoints="0;0;1;1" keyTimes="0.0000;0.8000;0.9500;1.0000" calcMode="linear"/>
+    <animate attributeName="opacity" dur="12.0s" repeatCount="indefinite"
+      values="0;0;1;1;0;0" keyTimes="0.0000;0.8000;0.8100;0.9400;0.9500;1.0000"/>
+  </circle>
+    <circle cx="1080" cy="47" r="5" fill="#12B76A">
+      <animate attributeName="opacity" dur="1.6s" repeatCount="indefinite" values="1;0.35;1"/>
+    </circle>
+    <text x="1092" y="52" class="label" style="fill:#067647">LIVE FLOW</text>
+  </g>
+</svg>

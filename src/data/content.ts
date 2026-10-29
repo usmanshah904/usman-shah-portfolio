@@ -26,8 +26,8 @@ export const profile = {
 
 export const navLinks = [
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Services', href: '#services' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Contact', href: '#contact' },
@@ -133,71 +133,196 @@ export const services: { group: string; items: Service[] }[] = [
   },
 ];
 
+export interface ProjectMedia {
+  label: string; // tab name, e.g. "Dashboard" or "Architecture"
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  kind?: 'shot' | 'diagram' | 'site'; // site: tall screenshot that scrolls on hover
+}
+
 export interface Project {
   title: string;
-  description: string;
-  tags: string[];
   category: Category;
+  challenge: string;
+  built: string[];
+  stack: string[];
+  output: string;
+  media: ProjectMedia[];
   url?: string; // live website; leave out if there is no public link
-  github?: string; // source repository
-  diagram?: 'a2a' | 'guardrails' | 'memory' | 'spec'; // animated architecture diagram used as the card cover
-  preview?: { src: string; width: number; height: number }; // full-page screenshot of the live site, scrolled on hover
+  github?: string; // repository with the demo and details
 }
+
+// Shown under the output of every project that has a repository.
+export const githubNote = 'For the demo and more details, visit the GitHub repository.';
 
 export const projects: Project[] = [
   {
     title: 'Multi-Agent System with Google ADK and A2A',
-    description:
-      'Two specialized agents collaborate through A2A, enabling research delegation and structured summaries powered by Google ADK and Gemini.',
-    tags: ['Google ADK', 'A2A', 'Gemini', 'Python'],
     category: 'genai',
+    challenge: 'Let independent AI agents work together across services without tightly coupling their code.',
+    built: [
+      'A summary agent that delegates research to a remote research agent over the A2A protocol.',
+      'The remote agent is discovered through its published Agent Card and called as a tool.',
+      'Model and service addresses are configurable, so each agent can run and scale on its own.',
+    ],
+    stack: ['Python', 'Google ADK', 'A2A Protocol', 'Gemini'],
+    output:
+      'The ADK web interface showing the live agent traces, plus an architecture diagram of how the agents connect.',
+    media: [
+      {
+        label: 'Agent traces',
+        src: '/projects/a2a-traces.webp',
+        width: 1280,
+        height: 703,
+        alt: 'ADK web interface showing the trace of the summary agent calling the research agent over A2A',
+      },
+      {
+        label: 'Architecture',
+        src: '/projects/arch-a2a.svg',
+        width: 1200,
+        height: 600,
+        alt: 'Architecture: the summary agent discovers the research agent through its Agent Card and calls it over A2A',
+        kind: 'diagram',
+      },
+    ],
     github: 'https://github.com/usmanshah904/adk-a2a-multi-agent',
-    diagram: 'a2a',
   },
   {
-    title: 'AI Agent with Reflection & Guardrails',
-    description:
-      'An AI-powered sales analyst that evaluates its own findings and blocks unsupported claims through a dedicated validation and governance layer.',
-    tags: ['Python', 'Claude Code', 'Agentic AI'],
+    title: 'AI Agent with Reflection and Guardrails',
     category: 'genai',
+    challenge: 'Make sure an AI-written business analysis is accurate before anyone reads it.',
+    built: [
+      'Claude writes a sales summary from real figures, and a reflection step checks every number.',
+      'An independent governance guardrail blocks unsupported claims.',
+      "Only an analysis that passes both is released; if a review can't be read, it stays blocked.",
+    ],
+    stack: ['Python', 'Claude', 'pandas'],
+    output:
+      'An HTML report for every run showing whether the analysis was released or blocked and why, an audit log, and an architecture diagram of the pipeline.',
+    media: [
+      {
+        label: 'Blocked report',
+        src: '/projects/guardrails-blocked.webp',
+        width: 1280,
+        height: 1559,
+        alt: 'HTML report of a blocked run: reflection FAIL and guardrail BLOCK, with the unsupported claim highlighted',
+        kind: 'site',
+      },
+      {
+        label: 'Released report',
+        src: '/projects/guardrails-released.webp',
+        width: 1280,
+        height: 1460,
+        alt: 'HTML report of a released run: reflection PASS and guardrail PASS',
+        kind: 'site',
+      },
+      {
+        label: 'Architecture',
+        src: '/projects/arch-guardrails.svg',
+        width: 1200,
+        height: 600,
+        alt: 'Pipeline: sales metrics, Claude analysis, reflection and guardrail checks, released only on a double pass',
+        kind: 'diagram',
+      },
+    ],
     github: 'https://github.com/usmanshah904/reflection-guardrails-agent',
-    diagram: 'guardrails',
   },
   {
     title: 'Spec-Driven Smart Task Manager',
-    description:
-      'A spec-driven React and TypeScript task manager with a live dashboard: priorities, due dates, categories, progress charts, and 43 automated tests mapped to its acceptance criteria.',
-    tags: ['React', 'TypeScript', 'Vite', 'Vitest'],
     category: 'software',
+    challenge: 'Build software where every feature is defined and proven, not assumed.',
+    built: [
+      'Every feature was written as a user story, requirement and acceptance criterion before any code.',
+      'When the app grew from a list into a live dashboard, the specification was updated first.',
+      'The dashboard tracks progress, deadlines and categories, with light and dark modes.',
+    ],
+    stack: ['React', 'TypeScript', 'Vite', 'Vitest'],
+    output:
+      'A live dashboard with stat cards, a progress ring, weekly activity and category charts, plus an architecture diagram of the spec-to-test workflow.',
+    media: [
+      {
+        label: 'Dashboard',
+        src: '/projects/task-dashboard.webp',
+        width: 1280,
+        height: 1000,
+        alt: 'Task manager dashboard with stat cards, progress ring, weekly activity chart, category donut and task list',
+      },
+      {
+        label: 'Architecture',
+        src: '/projects/arch-spec.svg',
+        width: 1200,
+        height: 600,
+        alt: 'Workflow: specs define the app, tests validate every acceptance criterion, changes go back through the spec',
+        kind: 'diagram',
+      },
+    ],
     github: 'https://github.com/usmanshah904/spec-driven-task-manager',
-    diagram: 'spec',
   },
   {
     title: 'Self-Improving Agent with Persistent Memory',
-    description:
-      'A memory-enabled AI agent that learns reusable preferences and skills from each task, merges duplicates, and applies the relevant ones on later runs.',
-    tags: ['Python', 'Claude Code', 'Agent Memory', 'JSON'],
     category: 'genai',
+    challenge: 'Stop users from repeating the same preferences on every task.',
+    built: [
+      'After each task, the agent learns one reusable preference, skill or instruction and stores it in a JSON memory.',
+      'On later tasks it retrieves only the relevant memories and applies them.',
+      'Similar memories of the same kind are merged, keeping the most detailed wording.',
+    ],
+    stack: ['Python', 'Claude Code', 'Agent Memory', 'JSON'],
+    output:
+      'An architecture diagram of the memory loop: retrieve, respond, learn and save. The project runs in the terminal, so it has no dashboard.',
+    media: [
+      {
+        label: 'Architecture',
+        src: '/projects/arch-memory.svg',
+        width: 1200,
+        height: 600,
+        alt: 'Memory loop: retrieve relevant memories, respond with Claude, learn one memory, consolidate and save to the JSON store',
+        kind: 'diagram',
+      },
+    ],
     github: 'https://github.com/usmanshah904/self-improving-memory-agent',
-    diagram: 'memory',
   },
   {
     title: 'Vnetrix',
-    description:
-      'Contributed to a UK IT services website, refining responsive layouts, custom styling, and on-page SEO for a consistent, professional web experience.',
-    tags: ['WordPress', 'Elementor', 'CSS', 'SEO'],
     category: 'web',
+    challenge: 'Keep a UK IT services website consistent, professional and search-friendly on every device.',
+    built: ['Refined responsive layouts, custom styling and on-page SEO across the site.'],
+    stack: ['WordPress', 'Elementor', 'CSS', 'SEO'],
+    output: 'The live website, previewed here.',
+    media: [
+      {
+        label: 'Live site',
+        src: '/projects/vnetrix.webp',
+        width: 720,
+        height: 1650,
+        alt: 'Vnetrix home page: hero, services, and why choose Vnetrix',
+        kind: 'site',
+      },
+    ],
     url: 'https://vnetrix.com',
-    preview: { src: '/projects/vnetrix.webp', width: 720, height: 1650 },
   },
   {
     title: 'Usman Anees',
-    description:
-      'Developed a responsive WordPress website with a refined layout, optimized media, integrated plugins, and search-friendly content structure.',
-    tags: ['WordPress', 'Elementor', 'Responsive Design'],
     category: 'web',
+    challenge: "Present a concert pianist and composer's work professionally on every device.",
+    built: [
+      'A responsive WordPress website with a refined layout, optimized media, integrated plugins and a search-friendly content structure.',
+    ],
+    stack: ['WordPress', 'Elementor', 'Responsive Design'],
+    output: 'The live website, previewed here.',
+    media: [
+      {
+        label: 'Live site',
+        src: '/projects/usmananees.webp',
+        width: 720,
+        height: 780,
+        alt: 'Usman Anees home page: hero with the pianist and the About the artist section',
+        kind: 'site',
+      },
+    ],
     url: 'https://usmananees.com',
-    preview: { src: '/projects/usmananees.webp', width: 720, height: 780 },
   },
 ];
 

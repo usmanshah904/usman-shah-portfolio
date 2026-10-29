@@ -1,7 +1,7 @@
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-  gap: 32px 48px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px 72px;
   align-items: start;
 }
 
@@ -15,91 +15,92 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 420px;
-  margin-top: 24px;
+  margin-top: 40px;
 }
 
+/* Each channel is a large row; on hover it fills with ink and the arrow moves. */
 .channel {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 14px 10px 10px;
-  color: var(--text);
+  gap: 16px;
+  padding: 16px 20px 16px 16px;
+  border-radius: var(--radius);
+  background: var(--bg);
+  transition:
+    background-color 0.35s var(--ease),
+    color 0.35s var(--ease);
+}
+
+.channel:hover,
+.channel:focus-visible {
+  background: var(--ink-bg);
+  color: var(--on-ink);
 }
 
 .channelIcon {
-  display: inline-flex;
+  display: grid;
+  place-items: center;
   flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: var(--accent-soft);
-  color: var(--indigo);
-  transition:
-    background 0.3s var(--ease),
-    color 0.3s var(--ease);
-}
-
-.channel:hover .channelIcon {
-  background: var(--gradient);
-  color: #ffffff;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--sage);
+  color: var(--on-ink);
 }
 
 .channelBody {
   display: flex;
-  flex: 1;
   flex-direction: column;
   min-width: 0;
 }
 
 .channelLabel {
-  color: var(--subtle);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  color: var(--muted);
+  transition: color 0.35s var(--ease);
+}
+
+.channel:hover .channelLabel,
+.channel:focus-visible .channelLabel {
+  color: var(--on-ink-muted);
 }
 
 .channelValue {
-  overflow-wrap: break-word;
-  font-family: var(--display);
-  font-size: 0.875rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .channelArrow {
-  color: var(--subtle);
-  transition:
-    transform 0.25s var(--ease),
-    color 0.25s var(--ease);
+  margin-left: auto;
+  transition: transform 0.35s var(--ease);
 }
 
 .channel:hover .channelArrow {
-  color: var(--indigo);
-  transform: translate(2px, -2px);
+  transform: translate(3px, -3px);
 }
 
 .formCard {
-  padding: 24px;
-  box-shadow: var(--shadow-md);
+  padding: 36px;
+  border-radius: calc(var(--radius) + 6px);
+  background: var(--surface);
+}
+
+@media (max-width: 520px) {
+  .formCard {
+    padding: 24px 20px;
+  }
 }
 
 .formTitle {
-  font-size: 1.0625rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
 .formIntro {
-  margin: 4px 0 18px;
+  margin: 6px 0 26px;
   color: var(--muted);
-  font-size: 0.875rem;
-}
-
-@media (max-width: 480px) {
-  .formCard {
-    padding: 18px 16px;
-  }
+  font-size: 1rem;
 }

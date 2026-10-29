@@ -1,63 +1,76 @@
 .grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
-  gap: 28px 64px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px 80px;
   align-items: start;
 }
 
-@media (max-width: 860px) {
+.title {
+  grid-column: 1 / -1;
+}
+
+.body {
+  display: contents;
+}
+
+@media (max-width: 900px) {
   .grid {
     grid-template-columns: minmax(0, 1fr);
   }
 }
 
 .text {
-  color: var(--text);
-  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
-  line-height: 1.75;
+  font-size: clamp(1.1875rem, 1rem + 0.7vw, 1.625rem);
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
   text-wrap: pretty;
 }
 
 .facts {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 28px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
 }
 
-@media (max-width: 960px) {
+@media (max-width: 520px) {
   .facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
   }
 }
 
+/* Each fact sits on a tone step from the section ground; sage fills it on hover. */
 .fact {
-  padding: 12px 14px;
-  overflow: hidden;
+  padding: 22px 24px;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  transition:
+    opacity 0.6s var(--ease),
+    transform 0.7s var(--ease),
+    background-color 0.35s var(--ease),
+    color 0.35s var(--ease);
 }
 
-/* Thin gradient accent along the top of each fact card */
-.fact::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 2px;
-  background: var(--gradient);
-  opacity: 0.8;
+.fact:hover {
+  background: var(--sage);
+  color: var(--on-ink);
 }
 
 .fact dt {
-  color: var(--subtle);
-  font-size: 0.75rem;
+  color: var(--muted);
+  font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  transition: color 0.35s var(--ease);
+}
+
+.fact:hover dt {
+  color: var(--on-ink-muted);
 }
 
 .fact dd {
-  margin-top: 4px;
-  font-family: var(--display);
-  font-size: 0.875rem;
-  font-weight: 600;
-  line-height: 1.35;
+  margin-top: 6px;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
 }
