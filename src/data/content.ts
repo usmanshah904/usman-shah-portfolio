@@ -58,7 +58,7 @@ export const techStrip = [
 
 // Section labels, headings and short intros.
 export const sections = {
-  about: { label: 'About', title: 'The engine and the interface.' },
+  about: { label: 'About', title: 'The craft behind the code.' },
   services: {
     label: 'Services',
     title: 'What I can help with',

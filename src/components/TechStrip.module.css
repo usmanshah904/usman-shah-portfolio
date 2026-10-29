@@ -27,7 +27,7 @@
   align-items: center;
   gap: 28px;
   padding: 0 14px;
-  font-size: clamp(1.25rem, 1rem + 1vw, 2rem);
+  font-size: clamp(1.0625rem, 0.95rem + 0.6vw, 1.5rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   white-space: nowrap;

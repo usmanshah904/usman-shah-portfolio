@@ -19,7 +19,7 @@
   gap: 10px;
   color: var(--ink);
   font-weight: 800;
-  font-size: 1rem;
+  font-size: 0.9375rem;
   letter-spacing: -0.02em;
 }
 
@@ -41,7 +41,7 @@
   display: block;
   padding: 4px 0;
   color: var(--ink);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
 }
 
@@ -102,7 +102,7 @@
   .links a {
     padding: 12px 0;
     color: var(--on-ink);
-    font-size: 1rem;
+    font-size: 0.9375rem;
     font-weight: 600;
   }
 }

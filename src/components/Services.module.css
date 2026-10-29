@@ -13,7 +13,7 @@
 .groupTitle {
   margin-bottom: 20px;
   color: var(--sage-light);
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   font-weight: 700;
 }
 
@@ -39,7 +39,7 @@
 }
 
 .title {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: -0.02em;
@@ -53,7 +53,7 @@
 .text {
   margin-top: 8px;
   color: var(--on-ink-muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
   line-height: 1.6;
   transition: color 0.4s var(--ease);
 }

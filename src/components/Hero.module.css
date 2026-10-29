@@ -36,7 +36,7 @@
 /* ---------- Headline: each line slides up in turn. Visible from the first frame (load score). ---------- */
 .title {
   grid-area: title;
-  font-size: clamp(2.1rem, 0.6rem + 6.4vw, 7rem);
+  font-size: clamp(2rem, 0.9rem + 4.4vw, 4.75rem);
   font-weight: 800;
   line-height: 0.98;
   letter-spacing: -0.045em;
@@ -58,7 +58,7 @@
 
 .subtext {
   max-width: 34ch;
-  font-size: clamp(1.0625rem, 0.98rem + 0.4vw, 1.3125rem);
+  font-size: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
   line-height: 1.55;
   font-weight: 500;
 }
@@ -177,7 +177,7 @@
   align-items: center;
   gap: 8px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
 
 .project svg {

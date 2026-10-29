@@ -67,7 +67,7 @@
 }
 
 .channelValue {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   overflow-wrap: anywhere;
 }
@@ -94,7 +94,7 @@
 }
 
 .formTitle {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 800;
   letter-spacing: -0.025em;
 }
@@ -102,5 +102,5 @@
 .formIntro {
   margin: 6px 0 26px;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 0.9375rem;
 }
