@@ -66,7 +66,7 @@ export const sections = {
   },
   projects: {
     label: 'Projects',
-    title: 'Selected work',
+    title: "Things I've built",
     intro: 'AI systems and web experiences engineered to solve real problems.',
   },
   skills: { label: 'Skills', title: 'Tools and technologies' },
