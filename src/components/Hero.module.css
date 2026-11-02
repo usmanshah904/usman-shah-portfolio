@@ -39,7 +39,6 @@
   font-size: clamp(1.875rem, 1.1rem + 2.9vw, 3.5rem);
   font-weight: 800;
   line-height: 0.98;
-  letter-spacing: -0.045em;
 }
 
 .line {

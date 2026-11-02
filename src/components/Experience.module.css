@@ -39,13 +39,15 @@
 
 .when {
   padding-top: 26px;
+}
+
+.when p {
   text-align: right;
 }
 
 .period {
   font-size: 1.0625rem;
   font-weight: 800;
-  letter-spacing: -0.01em;
 }
 
 .location {
@@ -153,7 +155,6 @@
   font-size: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
   font-weight: 800;
   line-height: 1.15;
-  letter-spacing: -0.025em;
 }
 
 .org {
@@ -189,6 +190,9 @@
     grid-row: 1;
     padding-top: 0;
     margin-bottom: 12px;
+  }
+
+  .when p {
     text-align: left;
   }
 

@@ -81,6 +81,27 @@ ol {
   list-style: none;
 }
 
+/* Body text is justified on every screen size. */
+p,
+dd,
+li {
+  text-align: justify;
+  text-justify: inter-word;
+  /* Long words may break at line ends, so justified lines keep even gaps on narrow screens. */
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphenate-limit-chars: 7 3 3;
+}
+
+/* Headings stay left-aligned, even inside justified blocks. */
+h1,
+h2,
+h3,
+h4 {
+  text-align: left;
+  hyphens: manual;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -191,7 +212,6 @@ img {
   font-size: clamp(1.625rem, 1.25rem + 1.3vw, 2.375rem);
   font-weight: 800;
   line-height: 1.02;
-  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 
