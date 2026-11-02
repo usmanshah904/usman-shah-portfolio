@@ -87,10 +87,9 @@ dd,
 li {
   text-align: justify;
   text-justify: inter-word;
-  /* Long words may break at line ends, so justified lines keep even gaps on narrow screens. */
-  hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphenate-limit-chars: 7 3 3;
+  /* Words are never split across lines. */
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 /* Headings stay left-aligned, even inside justified blocks. */
@@ -99,7 +98,6 @@ h2,
 h3,
 h4 {
   text-align: left;
-  hyphens: manual;
 }
 
 a {
