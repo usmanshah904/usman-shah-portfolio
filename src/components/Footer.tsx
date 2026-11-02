@@ -19,7 +19,7 @@ export function Footer() {
             <Logo size={32} light />
             {profile.name}
           </a>
-          <p className={styles.tagline}>{footer.tagline}</p>
+          <p className={`${styles.tagline} justify`}>{footer.tagline}</p>
           <ul className={styles.social} aria-label="Social links">
             <li>
               <a href={`mailto:${profile.email}`} aria-label="Email">

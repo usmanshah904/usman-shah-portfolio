@@ -64,7 +64,7 @@ export function Hero() {
           </h1>
 
         <div className={styles.copy}>
-          <p className={`${styles.subtext} ${styles.slide}`} style={d(2)}>
+          <p className={`${styles.subtext} ${styles.slide} justify`} style={d(2)}>
             {hero.subtext}
           </p>
 

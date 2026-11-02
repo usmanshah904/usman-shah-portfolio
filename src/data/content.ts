@@ -37,7 +37,7 @@ export const hero = {
   label: 'Gen AI  |  Web Development',
   headline: 'Gen AI Engineer & Web Developer',
   subtext:
-    'I engineer AI agents, RAG pipelines, and LLM-powered applications, alongside fast, responsive websites built for seamless user experiences.',
+    'I engineer AI agents, RAG pipelines, and LLM-\u2060powered applications, alongside fast, responsive websites built for seamless user experiences.',
 };
 
 // Scrolling strip of technologies under the hero.
@@ -62,7 +62,7 @@ export const sections = {
   services: {
     label: 'Services',
     title: 'What I can help with',
-    intro: 'Intelligent AI solutions and high-performance websites, built with purpose.',
+    intro: 'Intelligent AI solutions and high-\u2060performance websites, built with purpose.',
   },
   projects: {
     label: 'Projects',
@@ -74,7 +74,7 @@ export const sections = {
 };
 
 export const about =
-  "I'm a Gen AI Engineer and Web Developer focused on AI agents, RAG, and LLM-powered applications. Working primarily with TypeScript and Python, I combine intelligent systems with thoughtful interfaces, prioritizing reliability, rigorous testing, and practical guardrails.";
+  "I'm a Gen AI Engineer and Web Developer focused on AI agents, RAG, and LLM-\u2060powered applications. Working primarily with TypeScript and Python, I combine intelligent systems with thoughtful interfaces, prioritizing reliability, rigorous testing, and practical guardrails.";
 
 // Short facts shown next to the About text.
 export const aboutFacts = [
@@ -97,12 +97,12 @@ export const services: { group: string; items: Service[] }[] = [
       {
         icon: 'agent',
         title: 'AI Agent Engineering',
-        text: 'Build single and multi-agent systems with tool integration, persistent memory, and reliable guardrails.',
+        text: 'Build single and multi-\u2060agent systems with tool integration, persistent memory, and reliable guardrails.',
       },
       {
         icon: 'search',
         title: 'RAG & LLM Integration',
-        text: 'Connect your data to LLM-powered applications through contextual retrieval and intelligent search.',
+        text: 'Connect your data to LLM-\u2060powered applications through contextual retrieval and intelligent search.',
       },
       {
         icon: 'chat',
@@ -116,7 +116,7 @@ export const services: { group: string; items: Service[] }[] = [
     items: [
       {
         icon: 'code',
-        title: 'Full-Stack Development',
+        title: 'Full-\u2060Stack Development',
         text: 'Build modern React and TypeScript applications with clean interfaces, maintainable code, and automated tests.',
       },
       {
@@ -126,7 +126,7 @@ export const services: { group: string; items: Service[] }[] = [
       },
       {
         icon: 'gauge',
-        title: 'On-Page SEO & Performance',
+        title: 'On-\u2060Page SEO & Performance',
         text: 'Strengthen search visibility through optimized metadata, strategic internal linking, and performance improvements.',
       },
     ],
@@ -159,7 +159,7 @@ export const githubNote = 'For the demo and more details, visit the GitHub repos
 
 export const projects: Project[] = [
   {
-    title: 'Multi-Agent System with Google ADK and A2A',
+    title: 'Multi-\u2060Agent System with Google ADK and A2A',
     category: 'genai',
     challenge: 'Let independent AI agents work together across services without tightly coupling their code.',
     built: [
@@ -192,7 +192,7 @@ export const projects: Project[] = [
   {
     title: 'AI Agent with Reflection and Guardrails',
     category: 'genai',
-    challenge: 'Make sure an AI-written business analysis is accurate before anyone reads it.',
+    challenge: 'Make sure an AI-\u2060written business analysis is accurate before anyone reads it.',
     built: [
       'Claude writes a sales summary from real figures, and a reflection step checks every number.',
       'An independent governance guardrail blocks unsupported claims.',
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     github: 'https://github.com/usmanshah904/reflection-guardrails-agent',
   },
   {
-    title: 'Spec-Driven Smart Task Manager',
+    title: 'Spec-\u2060Driven Smart Task Manager',
     category: 'software',
     challenge: 'Build software where every feature is defined and proven, not assumed.',
     built: [
@@ -240,7 +240,7 @@ export const projects: Project[] = [
     ],
     stack: ['React', 'TypeScript', 'Vite', 'Vitest'],
     output:
-      'A live dashboard with stat cards, a progress ring, weekly activity and category charts, plus an architecture diagram of the spec-to-test workflow.',
+      'A live dashboard with stat cards, a progress ring, weekly activity and category charts, plus an architecture diagram of the spec-\u2060to-\u2060test workflow.',
     media: [
       {
         label: 'Dashboard',
@@ -261,7 +261,7 @@ export const projects: Project[] = [
     github: 'https://github.com/usmanshah904/spec-driven-task-manager',
   },
   {
-    title: 'Self-Improving Agent with Persistent Memory',
+    title: 'Self-\u2060Improving Agent with Persistent Memory',
     category: 'genai',
     challenge: 'Stop users from repeating the same preferences on every task.',
     built: [
@@ -287,8 +287,8 @@ export const projects: Project[] = [
   {
     title: 'Vnetrix',
     category: 'web',
-    challenge: 'Keep a UK IT services website consistent, professional and search-friendly on every device.',
-    built: ['Refined responsive layouts, custom styling and on-page SEO across the site.'],
+    challenge: 'Keep a UK IT services website consistent, professional and search-\u2060friendly on every device.',
+    built: ['Refined responsive layouts, custom styling and on-\u2060page SEO across the site.'],
     stack: ['WordPress', 'Elementor', 'CSS', 'SEO'],
     output: 'The live website, previewed here.',
     media: [
@@ -308,7 +308,7 @@ export const projects: Project[] = [
     category: 'web',
     challenge: "Present a concert pianist and composer's work professionally on every device.",
     built: [
-      'A responsive WordPress website with a refined layout, optimized media, integrated plugins and a search-friendly content structure.',
+      'A responsive WordPress website with a refined layout, optimized media, integrated plugins and a search-\u2060friendly content structure.',
     ],
     stack: ['WordPress', 'Elementor', 'Responsive Design'],
     output: 'The live website, previewed here.',
@@ -332,7 +332,7 @@ export const skills: { group: string; items: string[] }[] = [
     group: 'Gen AI',
     items: [
       'AI Agents',
-      'Multi-Agent Systems',
+      'Multi-\u2060Agent Systems',
       'RAG',
       'LLM Integration',
       'Prompt Engineering',
@@ -367,7 +367,7 @@ export const experience: {
     org: 'Mosaic AI',
     period: 'Sep 2026 – Present',
     location: 'Remote, USA',
-    text: 'Engineering AI agents, RAG pipelines, and LLM-powered features across backend and frontend systems.',
+    text: 'Engineering AI agents, RAG pipelines, and LLM-\u2060powered features across backend and frontend systems.',
     icon: 'agent',
     current: true,
     tags: ['AI Agents', 'RAG', 'LLM Features'],
@@ -377,9 +377,9 @@ export const experience: {
     org: 'Ataraxy Developers',
     period: 'Dec 2025 – Apr 2026',
     location: 'Islamabad, Pakistan',
-    text: 'Built and customized responsive WordPress websites and strengthened on-page SEO for client projects.',
+    text: 'Built and customized responsive WordPress websites and strengthened on-\u2060page SEO for client projects.',
     icon: 'layout',
-    tags: ['WordPress', 'On-Page SEO'],
+    tags: ['WordPress', 'On-\u2060Page SEO'],
   },
 ];
 
@@ -402,5 +402,5 @@ export const contactForm = {
 
 export const footer = {
   copyright: '© 2026 Usman Shah',
-  tagline: 'Gen AI Engineer building AI agents, RAG pipelines, and LLM-powered applications, with modern web development.',
+  tagline: 'Gen AI Engineer building AI agents, RAG pipelines, and LLM-\u2060powered applications, with modern web development.',
 };

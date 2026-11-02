@@ -17,7 +17,7 @@ export function Services() {
               {group.items.map((s, i) => (
                 <li key={s.title} className={styles.item} style={{ '--i': i + g * 3 } as CSSProperties}>
                   <h4 className={styles.title}>{s.title}</h4>
-                  <p className={styles.text}>{s.text}</p>
+                  <p className={`${styles.text} justify`}>{s.text}</p>
                 </li>
               ))}
             </ul>

@@ -14,7 +14,7 @@ export function About() {
         </h2>
 
         <div className={styles.body}>
-          <p className={`${styles.text} reveal`} style={{ '--d': 1 } as CSSProperties}>
+          <p className={`${styles.text} reveal justify`} style={{ '--d': 1 } as CSSProperties}>
             {about}
           </p>
 

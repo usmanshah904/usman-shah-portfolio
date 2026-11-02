@@ -92,12 +92,21 @@ li {
   -webkit-hyphens: none;
 }
 
-/* On phones the column is too narrow for even justified spacing, so text aligns left. */
+/* On phones the column is too narrow for even justified spacing, so text aligns left,
+   except the prose blocks marked .justify, which stay justified on every screen. */
 @media (max-width: 600px) {
   p,
   dd,
   li {
     text-align: left;
+  }
+
+  /* Spread the extra space across letters as well as words, so short phone lines stay even. */
+  p.justify {
+    font-size: 0.875rem;
+    line-height: 1.65;
+    text-align: justify;
+    text-justify: inter-character;
   }
 }
 

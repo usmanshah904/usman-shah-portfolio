@@ -67,7 +67,7 @@ export function Experience() {
             <div className={styles.card}>
               <h3 className={styles.role}>{item.role}</h3>
               {item.org && <p className={styles.org}>{item.org}</p>}
-              <p className={styles.text}>{item.text}</p>
+              <p className={`${styles.text} justify`}>{item.text}</p>
               <ul className="tag-list" aria-label="Focus areas">
                 {item.tags.map((t) => (
                   <li key={t} className="tag">
