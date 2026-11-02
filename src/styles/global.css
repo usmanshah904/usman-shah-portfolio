@@ -180,6 +180,10 @@ img {
   position: relative;
   padding: 136px 0;
   scroll-margin-top: 8px;
+  /* Below-the-fold sections are laid out only when they come near the screen,
+     which keeps the first load light on phones. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
 }
 
 @media (max-width: 720px) {
