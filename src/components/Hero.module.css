@@ -163,15 +163,11 @@
   object-fit: cover;
   object-position: top center;
   opacity: 0;
-  transform: scale(1.04);
-  transition:
-    opacity 0.8s var(--ease),
-    transform 6s linear;
+  transition: opacity 0.8s var(--ease);
 }
 
 .shotActive {
   opacity: 1;
-  transform: scale(1);
 }
 
 .caption {
