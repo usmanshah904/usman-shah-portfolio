@@ -92,6 +92,15 @@ li {
   -webkit-hyphens: none;
 }
 
+/* On phones the column is too narrow for even justified spacing, so text aligns left. */
+@media (max-width: 600px) {
+  p,
+  dd,
+  li {
+    text-align: left;
+  }
+}
+
 /* Headings stay left-aligned, even inside justified blocks. */
 h1,
 h2,

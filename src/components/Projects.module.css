@@ -169,3 +169,35 @@
   gap: 12px;
   margin-top: 36px;
 }
+
+/* Phones and tablets: the article's parts become rows of the grid so the media can sit
+   between the text and the button: title, details, media, button. */
+@media (max-width: 900px) {
+  .row {
+    gap: 0;
+  }
+
+  .body {
+    display: contents;
+  }
+
+  .title {
+    order: 1;
+  }
+
+  .details {
+    order: 2;
+    margin-top: 24px;
+  }
+
+  .row .mediaCol,
+  .flip .mediaCol {
+    order: 3;
+    margin-top: 32px;
+  }
+
+  .actions {
+    order: 4;
+    margin-top: 28px;
+  }
+}

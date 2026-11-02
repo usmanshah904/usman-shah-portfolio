@@ -86,3 +86,39 @@
   color: var(--on-ink);
   transform: translateY(-2px);
 }
+
+/* Phones: no panels, just each group's title and its pills (the earlier layout). */
+@media (max-width: 600px) {
+  .grid {
+    gap: 40px;
+  }
+
+  .panel {
+    padding: 0;
+    background: none;
+  }
+
+  .panel:hover {
+    box-shadow: none;
+  }
+
+  .head {
+    margin-bottom: 16px;
+    padding-bottom: 0;
+    box-shadow: none;
+  }
+
+  .head h3 {
+    font-size: 1.25rem;
+  }
+
+  .count {
+    display: none;
+  }
+
+  .skill {
+    padding: 10px 18px;
+    background: var(--bg);
+    font-size: 0.9375rem;
+  }
+}
