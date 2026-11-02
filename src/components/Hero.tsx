@@ -2,6 +2,7 @@ import { useEffect, useState, type CSSProperties } from 'react';
 import { hero, profile } from '../data/content';
 import { ButtonLink } from './Button';
 import { Icon } from './Icon';
+import { srcSetFor } from './imageSet';
 import styles from './Hero.module.css';
 
 // Real outputs from the published projects, shown in turn beside the headline.
@@ -116,12 +117,15 @@ export function Hero() {
               <img
                 key={s.src}
                 src={s.src}
+                srcSet={srcSetFor(s.src, s.width)}
+                sizes="(max-width: 960px) 100vw, 560px"
                 width={s.width}
                 height={s.height}
                 alt={i === active ? s.alt : ''}
                 aria-hidden={i === active ? undefined : true}
                 className={`${styles.shot} ${i === active ? styles.shotActive : ''}`}
                 loading={i === 0 ? 'eager' : 'lazy'}
+                fetchPriority={i === 0 ? 'high' : 'auto'}
                 decoding="async"
               />
             ))}

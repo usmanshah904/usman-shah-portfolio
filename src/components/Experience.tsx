@@ -35,7 +35,8 @@ export function Experience() {
     const onScroll = () => {
       if (!frame) frame = requestAnimationFrame(update);
     };
-    update();
+    // Measure after the first paint, so hydration is not held up by a layout read.
+    frame = requestAnimationFrame(update);
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     return () => {

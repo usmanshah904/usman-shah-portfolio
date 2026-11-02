@@ -390,7 +390,7 @@ img {
   transition: transform 0.4s var(--ease);
 }
 
-:hover > .link-line::after,
+a:hover > .link-line::after,
 .link-line:hover::after,
 .link-line:focus-visible::after {
   transform: scaleX(1);

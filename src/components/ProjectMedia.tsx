@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import type { ProjectMedia as Media } from '../data/content';
+import { srcSetFor } from './imageSet';
 import styles from './ProjectMedia.module.css';
 
 interface Props {
@@ -31,6 +32,8 @@ export function ProjectMedia({ title, media, url }: Props) {
             <img
               key={m.src}
               src={m.src}
+              srcSet={srcSetFor(m.src, m.width)}
+              sizes="(max-width: 900px) 100vw, 640px"
               width={m.width}
               height={m.height}
               alt={i === active ? m.alt : ''}
