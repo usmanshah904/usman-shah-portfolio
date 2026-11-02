@@ -27,7 +27,7 @@ listed here unless he asks for it.
 | `src/entry-server.tsx` + `scripts/prerender.mjs` | Build-time prerender: the whole page is rendered to HTML into `dist/index.html`. |
 | `index.html` | Title, meta description, Open Graph, canonical `https://usmanshah.dev/`, font preload, `color-scheme: only light`, noscript fallback. |
 | `public/` | `Usman_Resume.pdf`, `projects/` (real project screenshots as WebP and architecture diagrams as SVG, recoloured to the palette), `favicon.svg` (logo), `fonts/montserrat-latin.woff2` (+ OFL licence), `robots.txt`, `sitemap.xml`. |
-| `vercel.json` | 1-year immutable cache headers for `/assets/*` and `/fonts/*`. |
+| `vercel.json` | Security headers on every response (CSP, X-Frame-Options, nosniff, Referrer-Policy, Permissions-Policy, HSTS) and caching: 1-year immutable for `/assets/*` and `/fonts/*`, 1 week for `/projects/*`. |
 
 ## Commands
 
@@ -91,10 +91,18 @@ Redesigned on 2026-10-29 (he chose every item below from options). The goal was 
 
 - **Prerender + hydration:** components must render the same on the server and the client. Do not read `window`/`document`/`matchMedia` during render; use effects. `useReveal` keeps its visible state in React state (not `classList`) so re-renders don't hide sections.
 - **CSS order:** `global.css` must stay imported before `App` in `main.tsx`, so component styles override globals.
-- **Gradient text:** `.gradient-text` has vertical padding so tall letters aren't clipped. Keep it.
 - **Performance:** the hero headline and intro use a slide-only entrance (no opacity fade) so the page counts as loaded early. Avoid animating `left`/`top`/`stroke-dashoffset` continuously; prefer `transform`.
-- **Accessibility:** keep contrast at WCAG AA (secondary text `#647083`), visible focus states, labels on icon-only links, no text under 12px.
+- **Accessibility:** keep contrast at WCAG AA (secondary text `#48524D`), visible focus states, labels on icon-only links, no text under 12px.
+- **Justified text:** body text is justified, never hyphenated. On phones only the prose blocks marked `.justify` stay justified (14px, `text-justify: inter-character`); other text is left-aligned. Hyphenated words in `content.ts` carry a word joiner (`-⁠`) so they never split at line ends; keep it when editing those words.
+
+## Security
+
+- **Headers** (`vercel.json`): `Content-Security-Policy` allows only the site's own scripts, styles, fonts and images, plus `connect-src https://api.web3forms.com` for the contact form; `frame-ancestors 'none'`, `object-src 'none'`, `base-uri 'self'`. If a new external service is added (analytics, embeds, another form endpoint), add its origin to the CSP or it will be blocked. `style-src` needs `'unsafe-inline'` for React style attributes and the noscript style.
+- **No `Cross-Origin-Opener-Policy`:** it broke Lighthouse's mobile trace and adds little here (external links already use `noopener`).
+- `npm audit` was clean (0 vulnerabilities) on 2026-11-02; no secrets in the repo (the Web3Forms key is public by design).
 
 ## Quality bar
 
-Lighthouse on the live site: Accessibility, Best Practices and SEO 100; Performance ~100 desktop and 90+ mobile. Re-check after big changes.
+Lighthouse on the live site: Accessibility, Best Practices and SEO 100; Performance ~100 desktop and 90+ mobile. Re-check after big changes (`npx lighthouse https://usmanshah.dev/` and `--preset=desktop`; PageSpeed Insights' free API quota can run out). On 2026-11-02: desktop 100/100/100/100, mobile 93–96 performance with 100 elsewhere.
+
+What keeps mobile fast (keep these): project screenshots have 640px versions (`name-640.webp`, picked via `srcSetFor` in `src/components/imageSet.ts`); the first hero image has `fetchPriority="high"`; no long-running transitions on above-the-fold images (a 6 s zoom once cost ~10 points); sections below the hero use `content-visibility: auto`; scroll-linked code measures layout in `requestAnimationFrame`, not during hydration.
