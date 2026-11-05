@@ -68,7 +68,7 @@
 }
 
 .fact:hover dt {
-  color: var(--on-ink-muted);
+  color: var(--on-ink);
 }
 
 .fact dd {

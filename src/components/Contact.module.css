@@ -41,9 +41,6 @@
 .channel:focus-visible .channelIcon {
   background: var(--on-ink);
   color: var(--sage);
-  transition:
-    background-color 0.35s var(--ease),
-    color 0.35s var(--ease);
 }
 
 .channelIcon {
@@ -55,6 +52,9 @@
   border-radius: 50%;
   background: var(--sage);
   color: var(--on-ink);
+  transition:
+    background-color 0.35s var(--ease),
+    color 0.35s var(--ease);
 }
 
 .channelBody {
