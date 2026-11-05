@@ -37,7 +37,7 @@ export const hero = {
   label: 'Gen AI  |  Web Development',
   headline: 'Gen AI Engineer & Web Developer',
   subtext:
-    'I engineer AI agents, RAG pipelines, and LLM-\u2060powered applications, alongside fast, responsive websites built for seamless user experiences.',
+    'I engineer AI agents, RAG pipelines, and LLM-\u2060powered applications, alongside fast, responsive websites that load quickly and read clearly on every device.',
 };
 
 // Scrolling strip of technologies under the hero.
@@ -58,7 +58,7 @@ export const techStrip = [
 
 // Section labels, headings and short intros.
 export const sections = {
-  about: { label: 'About', title: 'The craft behind the code.' },
+  about: { label: 'About', title: 'The craft behind the code' },
   services: {
     label: 'Services',
     title: 'What I can help with',
@@ -395,7 +395,7 @@ export const contact = {
 export const contactForm = {
   web3formsAccessKey: 'b5aa0a6d-0363-492a-ae13-93e3af921195',
   topics: ['Gen AI engineering role', 'AI or web project', 'Freelance work', 'Collaboration'],
-  success: "Thanks for reaching out! Your message has been sent. I'll get back to you soon.",
+  success: "Thanks for reaching out. Your message has been sent, and I'll get back to you soon.",
   mailtoNotice: 'Your email app should open with your message ready to send.',
   error: 'Something went wrong while sending. Please try again, or email me directly.',
 };

@@ -16,19 +16,15 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--ink);
-  font-weight: 800;
+  font-weight: 600;
   font-size: 0.9375rem;
 }
 
 .brand svg {
   flex-shrink: 0;
   transition: transform 0.5s var(--ease);
-}
-
-.brand:hover svg {
-  transform: rotate(-10deg) scale(1.06);
 }
 
 .links {
@@ -52,7 +48,7 @@
 
 .cta {
   min-height: 42px;
-  padding-left: 18px;
+  padding-left: 20px;
   font-size: 0.875rem;
 }
 
@@ -88,7 +84,7 @@
     right: 16px;
     flex-direction: column;
     gap: 0;
-    padding: 10px 22px;
+    padding: 12px 24px;
     background: var(--ink-bg);
     border-radius: var(--radius);
     box-shadow: 0 24px 48px -20px rgba(28, 35, 33, 0.45);

@@ -34,7 +34,7 @@
   align-items: center;
   gap: 12px;
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 600;
 }
 
 .tagline {
@@ -47,7 +47,7 @@
 
 .social {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 24px;
 }
 
@@ -68,14 +68,13 @@
 .social a:hover,
 .social a:focus-visible {
   background: var(--sage);
-  transform: translateY(-3px);
 }
 
 .colTitle {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   color: var(--sage-light);
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .col ul {
@@ -106,8 +105,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 22px;
-  padding-bottom: 22px;
+  padding-top: 24px;
+  padding-bottom: 24px;
   color: var(--on-ink-muted);
   font-size: 0.9375rem;
 }
@@ -115,7 +114,7 @@
 .toTop {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--on-ink);
   font-weight: 600;
 }
@@ -138,5 +137,4 @@
 
 .toTop:hover .toTopIcon {
   background: var(--sage);
-  transform: translateY(-3px) scale(1.08);
 }

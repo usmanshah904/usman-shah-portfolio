@@ -14,7 +14,7 @@
   margin-bottom: 20px;
   color: var(--sage-light);
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .list {
@@ -25,7 +25,7 @@
 
 /* Each service is a row on a tone step; on hover it lights up in sage and the title steps in. */
 .item {
-  padding: 28px 30px 30px;
+  padding: 28px 32px 32px;
   border-radius: var(--radius);
   background: #232c29;
   transition:
@@ -40,13 +40,8 @@
 
 .title {
   font-size: 1.25rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
-  transition: transform 0.45s var(--ease);
-}
-
-.item:hover .title {
-  transform: translateX(8px);
 }
 
 .text {

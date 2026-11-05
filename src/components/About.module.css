@@ -40,7 +40,7 @@
 
 /* Each fact sits on a tone step from the section ground; sage fills it on hover. */
 .fact {
-  padding: 22px 24px;
+  padding: 24px 24px;
   border-radius: var(--radius-sm);
   background: var(--bg);
   transition:
@@ -55,6 +55,11 @@
   color: var(--on-ink);
 }
 
+.fact dt,
+.fact dd {
+  text-align: left;
+}
+
 .fact dt {
   color: var(--muted);
   font-size: 0.875rem;
@@ -67,8 +72,8 @@
 }
 
 .fact dd {
-  margin-top: 6px;
+  margin-top: 8px;
   font-size: 1.0625rem;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.3;
 }

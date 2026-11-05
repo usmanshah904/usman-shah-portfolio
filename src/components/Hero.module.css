@@ -10,14 +10,15 @@
   }
 }
 
-/* The headline runs the full width; the intro and the real project outputs sit below it. */
+/* Headline and intro on the left, the real project outputs beside them on the right. */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas:
-    'title title'
+    'title showcase'
     'copy showcase';
-  gap: 48px 64px;
+  grid-template-rows: auto 1fr;
+  gap: 40px 64px;
   align-items: start;
 }
 
@@ -37,7 +38,7 @@
 .title {
   grid-area: title;
   font-size: clamp(1.875rem, 1.1rem + 2.9vw, 3.5rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 0.98;
 }
 
@@ -113,7 +114,7 @@
 
 .social {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   margin-top: 28px;
 }
 
@@ -136,7 +137,6 @@
 .social a:focus-visible {
   background: var(--sage);
   color: var(--on-ink);
-  transform: translateY(-3px);
 }
 
 /* ---------- Showcase: real outputs from the projects ---------- */
@@ -175,15 +175,15 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 14px 20px;
-  margin-top: 18px;
+  gap: 16px 20px;
+  margin-top: 20px;
 }
 
 .project {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 0.9375rem;
 }
 
@@ -197,13 +197,13 @@
 
 .tabs {
   display: flex;
-  gap: 6px;
+  gap: 8px;
 }
 
 .tab {
   position: relative;
   overflow: hidden;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border: 0;
   border-radius: 999px;
   background: var(--surface-sage);

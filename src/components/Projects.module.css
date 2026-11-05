@@ -2,14 +2,14 @@
 .filters {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 
 .filter {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 18px;
+  padding: 12px 20px;
   border: 0;
   border-radius: 999px;
   background: var(--surface-sage);
@@ -34,7 +34,7 @@
 
 .count {
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   opacity: 0.7;
 }
 
@@ -77,14 +77,10 @@
   position: sticky;
   top: 32px;
   opacity: 0;
-  transform: translateX(-56px);
+  transform: translateY(24px);
   transition:
     opacity 0.8s var(--ease),
     transform 1s var(--ease);
-}
-
-.flip .mediaCol {
-  transform: translateX(56px);
 }
 
 .row:global(.is-visible) .mediaCol {
@@ -117,7 +113,7 @@
 
 .title {
   font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.08;
   text-wrap: balance;
 }
@@ -125,14 +121,14 @@
 .details {
   display: flex;
   flex-direction: column;
-  gap: 26px;
+  gap: 28px;
   margin-top: 32px;
 }
 
 .details dt {
   margin-bottom: 8px;
   font-size: 0.875rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--sage);
 }
 
@@ -144,12 +140,12 @@
 .built {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .built li {
   position: relative;
-  padding-left: 22px;
+  padding-left: 24px;
 }
 
 .built li::before {

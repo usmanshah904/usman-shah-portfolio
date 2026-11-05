@@ -164,7 +164,7 @@ img {
   left: 16px;
   top: -100px;
   z-index: 100;
-  padding: 10px 16px;
+  padding: 12px 16px;
   border-radius: 999px;
   background: var(--ink);
   color: var(--on-ink);
@@ -230,13 +230,13 @@ img {
 
 .section-title {
   font-size: clamp(1.625rem, 1.25rem + 1.3vw, 2.375rem);
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.02;
   text-wrap: balance;
 }
 
 .section-intro {
-  margin-top: 18px;
+  margin-top: 20px;
   color: var(--muted);
   font-size: 1.0625rem;
   line-height: 1.55;
@@ -256,7 +256,7 @@ img {
 
 .tag {
   display: inline-block;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
   background: var(--surface-sage);
   color: var(--ink);
@@ -275,7 +275,7 @@ img {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
   min-height: 44px;
   padding: 4px 4px 4px 20px;
   border: 0;
@@ -386,7 +386,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: -3px;
+  bottom: -4px;
   height: 2px;
   background: currentColor;
   transform: scaleX(0);
