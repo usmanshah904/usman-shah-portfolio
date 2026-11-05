@@ -39,8 +39,8 @@
 
 .channel:hover .channelIcon,
 .channel:focus-visible .channelIcon {
-  background: var(--on-ink);
-  color: var(--sage);
+  background: var(--sage-deep);
+  color: var(--on-ink);
 }
 
 .channelIcon {
@@ -72,7 +72,7 @@
 
 .channel:hover .channelLabel,
 .channel:focus-visible .channelLabel {
-  color: var(--on-ink-muted);
+  color: var(--on-ink);
 }
 
 .channelValue {
