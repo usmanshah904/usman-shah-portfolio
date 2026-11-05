@@ -39,7 +39,7 @@
 
 .channel:hover .channelIcon,
 .channel:focus-visible .channelIcon {
-  background: var(--sage-deep);
+  background: var(--sage);
   color: var(--on-ink);
 }
 
